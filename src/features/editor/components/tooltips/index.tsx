@@ -2,9 +2,29 @@ import { useCurrentEditor } from "@tiptap/react";
 
 import styles from "./index.module.scss";
 import { TbH1, TbH2, TbH3 } from "react-icons/tb";
+import { FaImage } from "react-icons/fa";
+import FileInput from "../file-input";
+import { useCallback } from "react";
+import { generateDataURLFromFile } from "../../libs/image";
 
 export default function Tooltips() {
   const { editor } = useCurrentEditor();
+
+  const onImageFileChange = useCallback(
+    async (file: File | null | undefined) => {
+      if (!file || !editor) return;
+
+      const url = await generateDataURLFromFile(file);
+      editor
+        .chain()
+        .focus()
+        .setImage({
+          src: url,
+        })
+        .run();
+    },
+    [editor]
+  );
 
   if (!editor) return null;
 
@@ -38,6 +58,9 @@ export default function Tooltips() {
         >
           <TbH3 size={20} />
         </button>
+        <FileInput onChange={onImageFileChange}>
+          <FaImage size={20} />
+        </FileInput>
       </div>
     </div>
   );

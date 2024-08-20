@@ -7,6 +7,8 @@ import Tooltips from "../tooltips";
 import Placeholder from "@tiptap/extension-placeholder";
 
 import "./index.scss";
+import Image from "@tiptap/extension-image";
+import Dropcursor from "@tiptap/extension-dropcursor";
 
 const extensions = [
   Document,
@@ -18,6 +20,8 @@ const extensions = [
   Heading.configure({
     levels: [1, 2, 3],
   }),
+  Image,
+  Dropcursor,
 ];
 
 const content = `
