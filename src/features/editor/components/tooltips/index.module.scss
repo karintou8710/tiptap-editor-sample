@@ -9,14 +9,15 @@
   button {
     height: 30px;
     width: 30px;
-    border: 1px solid;
-    font-weight: bold;
+    display: grid;
+    place-content: center;
     border-radius: 6px;
-    font-size: 14px;
+    border: 1px solid black;
 
     &[aria-checked="true"] {
       background-color: #06b6d4;
       color: white;
+      border: none;
     }
   }
 }
