@@ -5,11 +5,11 @@ import Text from "@tiptap/extension-text";
 import { BubbleMenu, EditorProvider } from "@tiptap/react";
 import Tooltips from "../tooltips";
 import Placeholder from "@tiptap/extension-placeholder";
-
-import "./index.scss";
-import Image from "@tiptap/extension-image";
+import { Image } from "../../exntensions/image";
 import Dropcursor from "@tiptap/extension-dropcursor";
 import History from "@tiptap/extension-history";
+
+import "./index.scss";
 
 const extensions = [
   Document,
