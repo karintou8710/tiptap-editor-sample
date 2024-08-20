@@ -1,0 +1,25 @@
+.tiptap {
+  padding: 1rem;
+  margin: 1rem 0;
+  border: 1px solid #404040;
+  border-radius: 10px;
+
+  h1,
+  h2,
+  h3 {
+    padding: 1rem 1.5rem;
+    background-color: #404040;
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+  }
+
+  p.is-editor-empty:first-child::before {
+    color: #adb5bd;
+    content: attr(data-placeholder);
+    float: left;
+    height: 0;
+    pointer-events: none;
+  }
+}

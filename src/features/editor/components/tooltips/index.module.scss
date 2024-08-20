@@ -1,0 +1,22 @@
+.controlGroup {
+}
+
+.buttonGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  button {
+    height: 30px;
+    width: 30px;
+    border: 1px solid;
+    font-weight: bold;
+    border-radius: 6px;
+    font-size: 14px;
+
+    &[aria-checked="true"] {
+      background-color: #06b6d4;
+      color: white;
+    }
+  }
+}

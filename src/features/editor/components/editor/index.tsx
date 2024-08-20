@@ -6,7 +6,7 @@ import { BubbleMenu, EditorProvider } from "@tiptap/react";
 import Tooltips from "../tooltips";
 import Placeholder from "@tiptap/extension-placeholder";
 
-import "./index.css";
+import "./index.scss";
 
 const extensions = [
   Document,
@@ -22,8 +22,7 @@ const extensions = [
 
 const content = `
         <h1>This is a 1st level heading</h1>
-        <h2>This is a 2nd level heading</h2>
-        <h3>This is a 3rd level heading</h3>
+        <p>This is a paragraph</p>
       `;
 
 export default function Editor() {

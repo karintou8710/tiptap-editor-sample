@@ -1,8 +1,10 @@
 import Editor from "./features/editor/components/editor";
 
+import styles from "./App.module.scss";
+
 function App() {
   return (
-    <div>
+    <div className={styles.wrapper}>
       <Editor />
     </div>
   );

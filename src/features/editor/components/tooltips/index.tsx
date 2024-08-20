@@ -1,20 +1,21 @@
 import { useCurrentEditor } from "@tiptap/react";
 
+import styles from "./index.module.scss";
+
 export default function Tooltips() {
   const { editor } = useCurrentEditor();
 
   if (!editor) return null;
 
   return (
-    <div className="control-group">
-      <div className="button-group">
+    <div className={styles.controlGroup}>
+      <div className={styles.buttonGroup}>
         <button
           onClick={() =>
             editor.chain().focus().toggleHeading({ level: 1 }).run()
           }
-          className={
-            editor.isActive("heading", { level: 1 }) ? "is-active" : ""
-          }
+          aria-role="checkbox"
+          aria-checked={editor.isActive("heading", { level: 1 })}
         >
           H1
         </button>
@@ -22,9 +23,8 @@ export default function Tooltips() {
           onClick={() =>
             editor.chain().focus().toggleHeading({ level: 2 }).run()
           }
-          className={
-            editor.isActive("heading", { level: 2 }) ? "is-active" : ""
-          }
+          aria-role="checkbox"
+          aria-checked={editor.isActive("heading", { level: 2 })}
         >
           H2
         </button>
@@ -32,9 +32,8 @@ export default function Tooltips() {
           onClick={() =>
             editor.chain().focus().toggleHeading({ level: 3 }).run()
           }
-          className={
-            editor.isActive("heading", { level: 3 }) ? "is-active" : ""
-          }
+          aria-role="checkbox"
+          aria-checked={editor.isActive("heading", { level: 3 })}
         >
           H3
         </button>
