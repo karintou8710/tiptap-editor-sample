@@ -6,6 +6,7 @@ import { FaImage } from "react-icons/fa";
 import FileInput from "../file-input";
 import { useCallback } from "react";
 import { generateDataURLFromFile } from "../../libs/image";
+import { MdRedo, MdUndo } from "react-icons/md";
 
 export default function Tooltips() {
   const { editor } = useCurrentEditor();
@@ -58,6 +59,14 @@ export default function Tooltips() {
         >
           <TbH3 size={20} />
         </button>
+
+        <button onClick={() => editor.chain().focus().undo().run()}>
+          <MdUndo size={20} />
+        </button>
+        <button onClick={() => editor.chain().focus().redo().run()}>
+          <MdRedo size={20} />
+        </button>
+
         <FileInput onChange={onImageFileChange}>
           <FaImage size={20} />
         </FileInput>

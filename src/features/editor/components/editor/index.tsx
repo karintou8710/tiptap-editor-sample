@@ -9,6 +9,7 @@ import Placeholder from "@tiptap/extension-placeholder";
 import "./index.scss";
 import Image from "@tiptap/extension-image";
 import Dropcursor from "@tiptap/extension-dropcursor";
+import History from "@tiptap/extension-history";
 
 const extensions = [
   Document,
@@ -22,6 +23,7 @@ const extensions = [
   }),
   Image,
   Dropcursor,
+  History,
 ];
 
 const content = `
