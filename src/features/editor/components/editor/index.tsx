@@ -17,6 +17,7 @@ import OrderedList from "@tiptap/extension-ordered-list";
 import HorizontalRule from "@tiptap/extension-horizontal-rule";
 import Bold from "@tiptap/extension-bold";
 import Italic from "@tiptap/extension-italic";
+import Strike from "@tiptap/extension-strike";
 
 const extensions = [
   Document,
@@ -41,6 +42,7 @@ const extensions = [
   HorizontalRule,
   Bold,
   Italic,
+  Strike,
 ];
 
 const content = `
