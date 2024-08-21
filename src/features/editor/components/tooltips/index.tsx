@@ -9,6 +9,7 @@ import { generateDataURLFromFile } from "../../libs/image";
 import {
   MdFormatListBulleted,
   MdFormatListNumbered,
+  MdHorizontalRule,
   MdRedo,
   MdUndo,
 } from "react-icons/md";
@@ -85,6 +86,13 @@ export default function Tooltips() {
           aria-checked={editor.isActive("orderedList")}
         >
           <MdFormatListNumbered size={20} />
+        </button>
+        <button
+          onClick={() => editor.chain().focus().setHorizontalRule().run()}
+          role="checkbox"
+          aria-checked={editor.isActive("horizontalRule")}
+        >
+          <MdHorizontalRule size={20} />
         </button>
 
         <button onClick={() => editor.chain().focus().undo().run()}>

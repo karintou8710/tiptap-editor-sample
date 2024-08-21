@@ -14,6 +14,7 @@ import Blockquote from "@tiptap/extension-blockquote";
 import BulletList from "@tiptap/extension-bullet-list";
 import ListItem from "@tiptap/extension-list-item";
 import OrderedList from "@tiptap/extension-ordered-list";
+import HorizontalRule from "@tiptap/extension-horizontal-rule";
 
 const extensions = [
   Document,
@@ -35,6 +36,7 @@ const extensions = [
   BulletList,
   ListItem,
   OrderedList,
+  HorizontalRule,
 ];
 
 const content = `

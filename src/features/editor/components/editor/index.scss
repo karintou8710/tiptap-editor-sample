@@ -1,8 +1,9 @@
 .tiptap {
   padding: 1rem;
   margin: 1rem 0;
-  border: 1px solid #404040;
   border-radius: 10px;
+  border: 1px solid black;
+  outline: none;
 
   p {
     margin: 6px 0;
@@ -33,6 +34,17 @@
     li p {
       margin-top: 0.25em;
       margin-bottom: 0.25em;
+    }
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid #adb5bd;
+    cursor: pointer;
+    margin: 2rem 0;
+
+    &.ProseMirror-selectednode {
+      border-top: 1px solid #9333ea;
     }
   }
 
