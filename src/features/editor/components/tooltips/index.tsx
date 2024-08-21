@@ -6,7 +6,12 @@ import { FaImage } from "react-icons/fa";
 import FileInput from "../file-input";
 import { useCallback } from "react";
 import { generateDataURLFromFile } from "../../libs/image";
-import { MdFormatListBulleted, MdRedo, MdUndo } from "react-icons/md";
+import {
+  MdFormatListBulleted,
+  MdFormatListNumbered,
+  MdRedo,
+  MdUndo,
+} from "react-icons/md";
 import { BsBlockquoteLeft } from "react-icons/bs";
 
 export default function Tooltips() {
@@ -73,6 +78,13 @@ export default function Tooltips() {
           aria-checked={editor.isActive("bulletList")}
         >
           <MdFormatListBulleted size={20} />
+        </button>
+        <button
+          onClick={() => editor.chain().focus().toggleOrderedList().run()}
+          role="checkbox"
+          aria-checked={editor.isActive("orderedList")}
+        >
+          <MdFormatListNumbered size={20} />
         </button>
 
         <button onClick={() => editor.chain().focus().undo().run()}>

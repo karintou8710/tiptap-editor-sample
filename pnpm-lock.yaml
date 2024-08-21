@@ -32,6 +32,9 @@ importers:
       '@tiptap/extension-list-item':
         specifier: ^2.6.5
         version: 2.6.5(@tiptap/core@2.6.4(@tiptap/pm@2.6.4))
+      '@tiptap/extension-ordered-list':
+        specifier: ^2.6.5
+        version: 2.6.5(@tiptap/core@2.6.4(@tiptap/pm@2.6.4))
       '@tiptap/extension-paragraph':
         specifier: ^2.6.4
         version: 2.6.4(@tiptap/core@2.6.4(@tiptap/pm@2.6.4))
@@ -534,6 +537,11 @@ packages:
 
   '@tiptap/extension-list-item@2.6.5':
     resolution: {integrity: sha512-Ks/m2spl3t3pX8W23H1clq0CQ2cGrLKdPxpSn3DAbZxYjT3SF7jpJaG3e+MKKh84PcjY0Xa3FextuLFRSLlgOw==}
+    peerDependencies:
+      '@tiptap/core': ^2.6.5
+
+  '@tiptap/extension-ordered-list@2.6.5':
+    resolution: {integrity: sha512-brTZiwS3Lg3bFXCJABfJ1UOLiX08BNnWw/mOBYuKsnBvIPJQpJ98C1galnX77ihsjFtAUdVdm7xlwcX2q5x8Yg==}
     peerDependencies:
       '@tiptap/core': ^2.6.5
 
@@ -1738,6 +1746,10 @@ snapshots:
       '@tiptap/core': 2.6.4(@tiptap/pm@2.6.4)
 
   '@tiptap/extension-list-item@2.6.5(@tiptap/core@2.6.4(@tiptap/pm@2.6.4))':
+    dependencies:
+      '@tiptap/core': 2.6.4(@tiptap/pm@2.6.4)
+
+  '@tiptap/extension-ordered-list@2.6.5(@tiptap/core@2.6.4(@tiptap/pm@2.6.4))':
     dependencies:
       '@tiptap/core': 2.6.4(@tiptap/pm@2.6.4)
 
