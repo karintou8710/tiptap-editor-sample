@@ -11,6 +11,9 @@ importers:
       '@tiptap/extension-blockquote':
         specifier: ^2.6.5
         version: 2.6.5(@tiptap/core@2.6.4(@tiptap/pm@2.6.4))
+      '@tiptap/extension-bold':
+        specifier: ^2.6.5
+        version: 2.6.5(@tiptap/core@2.6.4(@tiptap/pm@2.6.4))
       '@tiptap/extension-bullet-list':
         specifier: ^2.6.5
         version: 2.6.5(@tiptap/core@2.6.4(@tiptap/pm@2.6.4))
@@ -491,6 +494,11 @@ packages:
 
   '@tiptap/extension-blockquote@2.6.5':
     resolution: {integrity: sha512-lKg/8UfsToG0GycizXGqFlA4/ptB3KumM8ch3MBKRLqy/yViu4oXpbTCqE9sqx/WNUYiriPrvkQnBW10LfFIJQ==}
+    peerDependencies:
+      '@tiptap/core': ^2.6.5
+
+  '@tiptap/extension-bold@2.6.5':
+    resolution: {integrity: sha512-ey78g9YCOQi+qQ58QBFvWJVIXLQ+9isamshO9lzoc4RdtWDm+WuIUmmyoeneRcQixbVlyvOOMUf7PNKdIZHHtg==}
     peerDependencies:
       '@tiptap/core': ^2.6.5
 
@@ -1713,6 +1721,10 @@ snapshots:
       '@tiptap/pm': 2.6.4
 
   '@tiptap/extension-blockquote@2.6.5(@tiptap/core@2.6.4(@tiptap/pm@2.6.4))':
+    dependencies:
+      '@tiptap/core': 2.6.4(@tiptap/pm@2.6.4)
+
+  '@tiptap/extension-bold@2.6.5(@tiptap/core@2.6.4(@tiptap/pm@2.6.4))':
     dependencies:
       '@tiptap/core': 2.6.4(@tiptap/pm@2.6.4)
 

@@ -15,6 +15,7 @@ import BulletList from "@tiptap/extension-bullet-list";
 import ListItem from "@tiptap/extension-list-item";
 import OrderedList from "@tiptap/extension-ordered-list";
 import HorizontalRule from "@tiptap/extension-horizontal-rule";
+import Bold from "@tiptap/extension-bold";
 
 const extensions = [
   Document,
@@ -37,6 +38,7 @@ const extensions = [
   ListItem,
   OrderedList,
   HorizontalRule,
+  Bold,
 ];
 
 const content = `
