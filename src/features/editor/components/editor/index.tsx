@@ -16,6 +16,7 @@ import ListItem from "@tiptap/extension-list-item";
 import OrderedList from "@tiptap/extension-ordered-list";
 import HorizontalRule from "@tiptap/extension-horizontal-rule";
 import Bold from "@tiptap/extension-bold";
+import Italic from "@tiptap/extension-italic";
 
 const extensions = [
   Document,
@@ -39,6 +40,7 @@ const extensions = [
   OrderedList,
   HorizontalRule,
   Bold,
+  Italic,
 ];
 
 const content = `

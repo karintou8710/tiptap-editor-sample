@@ -1,7 +1,7 @@
 import { Editor } from "@tiptap/react";
 
 import styles from "./index.module.scss";
-import { MdFormatBold } from "react-icons/md";
+import { MdFormatBold, MdFormatItalic } from "react-icons/md";
 
 type Props = {
   editor: Editor;
@@ -17,6 +17,13 @@ export default function TooltipsMark({ editor, className }: Props) {
         aria-checked={editor.isActive("bold")}
       >
         <MdFormatBold size={20} />
+      </button>
+      <button
+        onClick={() => editor.chain().focus().toggleItalic().run()}
+        role="checkbox"
+        aria-checked={editor.isActive("italic")}
+      >
+        <MdFormatItalic size={20} />
       </button>
     </div>
   );
