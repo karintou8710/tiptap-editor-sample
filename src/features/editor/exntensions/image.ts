@@ -10,8 +10,14 @@ export const Image = TiptapImage.extend({
       new Plugin({
         key: new PluginKey("dragAndDropImageHandler"),
         props: {
-          handleDrop(_, event, __, moved) {
+          handleDrop(view, event, __, moved) {
+            const pos = view.posAtCoords({
+              left: event.pageX,
+              top: event.pageY,
+            });
+
             if (
+              pos &&
               !moved &&
               event.dataTransfer &&
               event.dataTransfer.files.length === 1
@@ -22,8 +28,11 @@ export const Image = TiptapImage.extend({
                 (url) => {
                   editor
                     .chain()
-                    .setImage({
-                      src: url,
+                    .insertContentAt(pos.pos, {
+                      type: "image",
+                      attrs: {
+                        src: url,
+                      },
                     })
                     .run();
                 }

@@ -22,13 +22,19 @@ const extensions = [
     levels: [1, 2, 3],
   }),
   Image,
-  Dropcursor,
+  Dropcursor.configure({
+    width: 2,
+    color: "#9333ea",
+  }),
   History,
 ];
 
 const content = `
-        <h1>This is a 1st level heading</h1>
-        <p>This is a paragraph</p>
+        <p>1</p>
+        <p>2</p>
+        <p>3</p>
+        <p>4</p>
+        <p>5</p>
       `;
 
 export default function Editor() {
