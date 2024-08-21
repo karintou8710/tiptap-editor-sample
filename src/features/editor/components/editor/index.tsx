@@ -2,7 +2,7 @@ import Document from "@tiptap/extension-document";
 import Heading from "@tiptap/extension-heading";
 import Paragraph from "@tiptap/extension-paragraph";
 import Text from "@tiptap/extension-text";
-import { BubbleMenu, EditorProvider } from "@tiptap/react";
+import { EditorProvider } from "@tiptap/react";
 import Tooltips from "../tooltips";
 import Placeholder from "@tiptap/extension-placeholder";
 import { Image } from "../../exntensions/image";
@@ -20,6 +20,7 @@ import Italic from "@tiptap/extension-italic";
 import Strike from "@tiptap/extension-strike";
 import Underline from "@tiptap/extension-underline";
 import Code from "@tiptap/extension-code";
+import BubbleTooltips from "../bubble-tooltips";
 
 const extensions = [
   Document,
@@ -50,11 +51,10 @@ const extensions = [
 ];
 
 const content = `
-        <p>1</p>
-        <p>2</p>
-        <p>3</p>
-        <p>4</p>
-        <p>5</p>
+        <h1>This is title</h1>
+        <p>texttext</p>
+        <p>texttext</p>
+        <p>texttext</p>
       `;
 
 export default function Editor() {
@@ -64,7 +64,7 @@ export default function Editor() {
       content={content}
       slotBefore={<Tooltips />}
     >
-      <BubbleMenu editor={null}>This is the bubble menu</BubbleMenu>
+      <BubbleTooltips />
     </EditorProvider>
   );
 }
