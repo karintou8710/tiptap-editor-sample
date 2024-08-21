@@ -11,6 +11,8 @@ import History from "@tiptap/extension-history";
 
 import "./index.scss";
 import Blockquote from "@tiptap/extension-blockquote";
+import BulletList from "@tiptap/extension-bullet-list";
+import ListItem from "@tiptap/extension-list-item";
 
 const extensions = [
   Document,
@@ -29,6 +31,8 @@ const extensions = [
   }),
   History,
   Blockquote,
+  BulletList,
+  ListItem,
 ];
 
 const content = `
