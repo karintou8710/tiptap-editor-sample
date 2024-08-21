@@ -10,6 +10,7 @@ import Dropcursor from "@tiptap/extension-dropcursor";
 import History from "@tiptap/extension-history";
 
 import "./index.scss";
+import Blockquote from "@tiptap/extension-blockquote";
 
 const extensions = [
   Document,
@@ -27,6 +28,7 @@ const extensions = [
     color: "#9333ea",
   }),
   History,
+  Blockquote,
 ];
 
 const content = `

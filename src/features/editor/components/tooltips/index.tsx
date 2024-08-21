@@ -7,6 +7,7 @@ import FileInput from "../file-input";
 import { useCallback } from "react";
 import { generateDataURLFromFile } from "../../libs/image";
 import { MdRedo, MdUndo } from "react-icons/md";
+import { BsBlockquoteLeft } from "react-icons/bs";
 
 export default function Tooltips() {
   const { editor } = useCurrentEditor();
@@ -58,6 +59,13 @@ export default function Tooltips() {
           aria-checked={editor.isActive("heading", { level: 3 })}
         >
           <TbH3 size={20} />
+        </button>
+        <button
+          onClick={() => editor.chain().focus().toggleBlockquote().run()}
+          role="checkbox"
+          aria-checked={editor.isActive("blockquote")}
+        >
+          <BsBlockquoteLeft size={20} />
         </button>
 
         <button onClick={() => editor.chain().focus().undo().run()}>
