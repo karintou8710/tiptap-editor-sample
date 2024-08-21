@@ -18,6 +18,8 @@ import HorizontalRule from "@tiptap/extension-horizontal-rule";
 import Bold from "@tiptap/extension-bold";
 import Italic from "@tiptap/extension-italic";
 import Strike from "@tiptap/extension-strike";
+import Underline from "@tiptap/extension-underline";
+import Code from "@tiptap/extension-code";
 
 const extensions = [
   Document,
@@ -43,6 +45,8 @@ const extensions = [
   Bold,
   Italic,
   Strike,
+  Underline,
+  Code,
 ];
 
 const content = `
