@@ -2,7 +2,7 @@ import TiptapImage from "@tiptap/extension-image";
 import { Plugin, PluginKey } from "@tiptap/pm/state";
 import { generateDataURLFromFile } from "../libs/image";
 
-export const Image = TiptapImage.extend({
+const Image = TiptapImage.extend({
   addProseMirrorPlugins() {
     const editor = this.editor;
 
@@ -48,3 +48,5 @@ export const Image = TiptapImage.extend({
     ];
   },
 });
+
+export default Image;

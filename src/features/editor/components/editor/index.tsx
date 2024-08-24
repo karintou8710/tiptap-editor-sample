@@ -5,7 +5,6 @@ import Text from "@tiptap/extension-text";
 import { EditorProvider } from "@tiptap/react";
 import Tooltips from "../tooltips";
 import Placeholder from "@tiptap/extension-placeholder";
-import { Image } from "../../exntensions/image";
 import Dropcursor from "@tiptap/extension-dropcursor";
 import History from "@tiptap/extension-history";
 
@@ -21,6 +20,8 @@ import Strike from "@tiptap/extension-strike";
 import Underline from "@tiptap/extension-underline";
 import Code from "@tiptap/extension-code";
 import BubbleTooltips from "../bubble-tooltips";
+import Image from "../../exntensions/image";
+import Pen from "../../exntensions/pen";
 
 const extensions = [
   Document,
@@ -48,6 +49,7 @@ const extensions = [
   Strike,
   Underline,
   Code,
+  Pen,
 ];
 
 const content = `

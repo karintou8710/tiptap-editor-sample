@@ -8,6 +8,7 @@ import {
   MdFormatStrikethrough,
   MdFormatUnderlined,
 } from "react-icons/md";
+import { FaMarker } from "react-icons/fa";
 
 type Props = {
   editor: Editor;
@@ -51,6 +52,13 @@ export default function TooltipsMark({ editor, className }: Props) {
         aria-checked={editor.isActive("code")}
       >
         <MdCode size={20} />
+      </button>
+      <button
+        onClick={() => editor.chain().focus().togglePen().run()}
+        role="checkbox"
+        aria-checked={editor.isActive("pen")}
+      >
+        <FaMarker size={15} />
       </button>
     </div>
   );
