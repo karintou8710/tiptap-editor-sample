@@ -1,6 +1,6 @@
 import TiptapImage from "@tiptap/extension-image";
 import { Plugin, PluginKey } from "@tiptap/pm/state";
-import { generateDataURLFromFile } from "../libs/image";
+import { generateDataURLFromFile } from "../../libs/image";
 
 const Image = TiptapImage.extend({
   addProseMirrorPlugins() {
