@@ -16,8 +16,12 @@ const Image = TiptapImage.extend({
               top: event.pageY,
             });
 
+            if (!pos) return false;
+
+            const { doc } = view.state;
+            const $pos = doc.resolve(pos.pos);
+
             if (
-              pos &&
               !moved &&
               event.dataTransfer &&
               event.dataTransfer.files.length === 1
@@ -28,7 +32,7 @@ const Image = TiptapImage.extend({
                 (url) => {
                   editor
                     .chain()
-                    .insertContentAt(pos.pos, {
+                    .insertContentAt($pos.after(1), {
                       type: "image",
                       attrs: {
                         src: url,
@@ -40,8 +44,6 @@ const Image = TiptapImage.extend({
 
               return true;
             }
-
-            return false;
           },
         },
       }),

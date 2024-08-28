@@ -6,10 +6,10 @@ import "./index.scss";
 import extensions from "./extensions";
 
 const content = `
-        <h1>This is title</h1>
-        <p>texttext</p>
-        <p>texttext</p>
-        <p>texttext</p>
+        <h1>1</h1>
+        <p>23</p>
+        <p>456</p>
+        <p>7</p>
       `;
 
 export default function Editor() {

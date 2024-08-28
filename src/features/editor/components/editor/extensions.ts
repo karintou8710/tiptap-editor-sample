@@ -3,7 +3,6 @@ import Heading from "@tiptap/extension-heading";
 import Paragraph from "@tiptap/extension-paragraph";
 import Text from "@tiptap/extension-text";
 import Placeholder from "@tiptap/extension-placeholder";
-import Dropcursor from "@tiptap/extension-dropcursor";
 import History from "@tiptap/extension-history";
 import { Extensions } from "@tiptap/react";
 
@@ -21,8 +20,10 @@ import Code from "@tiptap/extension-code";
 import Image from "../../exntensions/image";
 import Pen from "../../exntensions/pen";
 import ForceParagraphLastBlock from "../../exntensions/force-paragraph-last-block";
+import CustomDropCursor from "../../exntensions/drop-cursor";
 
 const extensions: Extensions = [
+  CustomDropCursor,
   Document,
   Paragraph,
   Text,
@@ -33,10 +34,6 @@ const extensions: Extensions = [
     levels: [1, 2, 3],
   }),
   Image,
-  Dropcursor.configure({
-    width: 2,
-    color: "#9333ea",
-  }),
   History,
   Blockquote,
   BulletList,
