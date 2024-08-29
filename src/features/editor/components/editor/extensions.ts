@@ -22,6 +22,7 @@ import Pen from "../../exntensions/pen";
 import ForceParagraphLastBlock from "../../exntensions/force-paragraph-last-block";
 import CustomDropCursor from "../../exntensions/drop-cursor";
 import Youtube from "@tiptap/extension-youtube";
+import TweetEmbed from "../../exntensions/tweet-embed";
 
 const extensions: Extensions = [
   CustomDropCursor,
@@ -49,6 +50,7 @@ const extensions: Extensions = [
   Pen,
   ForceParagraphLastBlock,
   Youtube,
+  TweetEmbed,
 ];
 
 export default extensions;
