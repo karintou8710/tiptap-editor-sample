@@ -59,10 +59,6 @@
     height: auto;
     margin: 1.5rem auto;
     max-width: 100%;
-
-    &.ProseMirror-selectednode {
-      outline: 3px solid #9333ea;
-    }
   }
 
   code {
@@ -77,5 +73,13 @@
   .pen {
     padding: 2px 0;
     background: linear-gradient(transparent 50%, #fdba74 70%);
+  }
+
+  img,
+  div[data-youtube-video],
+  .node-tweet-embed {
+    &.ProseMirror-selectednode {
+      outline: 3px solid #9333ea;
+    }
   }
 }
