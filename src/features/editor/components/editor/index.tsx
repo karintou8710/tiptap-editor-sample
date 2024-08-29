@@ -6,10 +6,12 @@ import "./index.scss";
 import extensions from "./extensions";
 
 const content = `
-        <h1>1</h1>
-        <p>23</p>
-        <p>456</p>
-        <p>7</p>
+        <h1>Tiptap製のエディタ</h1>
+        <p></p>
+        <p><b>Mill - Compass</b></p>
+        <div data-youtube-video>
+          <iframe src="https://www.youtube.com/watch?v=92E0X59wzeg" width="700" height="394"></iframe>
+        </div>
       `;
 
 export default function Editor() {

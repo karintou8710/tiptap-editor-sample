@@ -21,6 +21,7 @@ import Image from "../../exntensions/image";
 import Pen from "../../exntensions/pen";
 import ForceParagraphLastBlock from "../../exntensions/force-paragraph-last-block";
 import CustomDropCursor from "../../exntensions/drop-cursor";
+import Youtube from "@tiptap/extension-youtube";
 
 const extensions: Extensions = [
   CustomDropCursor,
@@ -47,6 +48,7 @@ const extensions: Extensions = [
   Code,
   Pen,
   ForceParagraphLastBlock,
+  Youtube,
 ];
 
 export default extensions;

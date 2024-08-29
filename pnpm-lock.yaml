@@ -62,6 +62,9 @@ importers:
       '@tiptap/extension-underline':
         specifier: ^2.6.5
         version: 2.6.5(@tiptap/core@2.6.6(@tiptap/pm@2.6.4))
+      '@tiptap/extension-youtube':
+        specifier: ^2.6.6
+        version: 2.6.6(@tiptap/core@2.6.6(@tiptap/pm@2.6.4))
       '@tiptap/pm':
         specifier: ^2.6.4
         version: 2.6.4
@@ -609,6 +612,11 @@ packages:
     resolution: {integrity: sha512-OUkCVviAe1m5j0xZZHDdNhX4kd7TpasWJn9TvEhAoE9zCaCn54T1xSFGWq61Eu4qICn+KPjgWXWOGwniKEIrKg==}
     peerDependencies:
       '@tiptap/core': ^2.6.5
+
+  '@tiptap/extension-youtube@2.6.6':
+    resolution: {integrity: sha512-p25UnWrUYjKS7lr6bEYfmdSka67Xxylh02fdoejzuDS412oOyh1Pr0MPlRH6AT+jdolEZ7vHNF/YZ9HYjCqgJg==}
+    peerDependencies:
+      '@tiptap/core': ^2.6.6
 
   '@tiptap/pm@2.6.4':
     resolution: {integrity: sha512-k/AyigUioZVxFTcF7kWcUh5xeOV0bdGzHz+wmtP33md2jo8SJP29yEZ4Kshvk0IcFnVFEDrsfKiGhLRWpKx+YQ==}
@@ -1837,6 +1845,10 @@ snapshots:
       '@tiptap/core': 2.6.6(@tiptap/pm@2.6.4)
 
   '@tiptap/extension-underline@2.6.5(@tiptap/core@2.6.6(@tiptap/pm@2.6.4))':
+    dependencies:
+      '@tiptap/core': 2.6.6(@tiptap/pm@2.6.4)
+
+  '@tiptap/extension-youtube@2.6.6(@tiptap/core@2.6.6(@tiptap/pm@2.6.4))':
     dependencies:
       '@tiptap/core': 2.6.6(@tiptap/pm@2.6.4)
 

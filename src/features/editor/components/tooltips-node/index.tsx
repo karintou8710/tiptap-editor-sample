@@ -2,7 +2,7 @@ import { Editor } from "@tiptap/react";
 
 import styles from "./index.module.scss";
 import { TbH1, TbH2, TbH3 } from "react-icons/tb";
-import { FaImage } from "react-icons/fa";
+import { FaImage, FaYoutube } from "react-icons/fa";
 import FileInput from "../file-input";
 import { useCallback } from "react";
 import { generateDataURLFromFile } from "../../libs/image";
@@ -35,6 +35,18 @@ export default function TooltipsNode({ editor }: Props) {
     },
     [editor]
   );
+
+  const addYoutubeVideo = () => {
+    const url = prompt("Enter YouTube URL");
+
+    if (url) {
+      editor.commands.setYoutubeVideo({
+        src: url,
+        width: 700,
+        height: (700 / 16) * 9,
+      });
+    }
+  };
 
   return (
     <div className={styles.buttonGroup}>
@@ -93,6 +105,9 @@ export default function TooltipsNode({ editor }: Props) {
       </button>
       <button onClick={() => editor.chain().focus().redo().run()}>
         <MdRedo size={20} />
+      </button>
+      <button onClick={addYoutubeVideo}>
+        <FaYoutube size={20} />
       </button>
 
       <FileInput onChange={onImageFileChange}>
