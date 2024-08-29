@@ -11,7 +11,13 @@ const ForceParagraphLastBlock = Extension.create({
         type: "paragraph",
         text: "",
       });
-      editor.commands.setTextSelection(currentPos);
+      if (lastChild.isTextblock) {
+        // 見出し・引用・コードブロックなど
+        editor.commands.setTextSelection(currentPos);
+      } else {
+        // 埋め込み・画像など
+        editor.commands.setNodeSelection(currentPos);
+      }
     }
   },
 });
