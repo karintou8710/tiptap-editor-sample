@@ -8,8 +8,14 @@ const TweetEmbed = Node.create({
 
   addAttributes() {
     return {
-      url: {
-        default: "https://x.com/McDonaldsJapan/status/1827609356835184698",
+      tweetId: {
+        default: null,
+        parseHTML: (element) => element.getAttribute("data-tweet-id"),
+        renderHTML: (attributes) => {
+          return {
+            "data-tweet-id": attributes.tweetId,
+          };
+        },
       },
     };
   },

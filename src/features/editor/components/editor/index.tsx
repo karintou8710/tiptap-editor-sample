@@ -12,7 +12,7 @@ const content = `
         <div data-youtube-video>
           <iframe src="https://www.youtube.com/watch?v=92E0X59wzeg" width="700" height="394"></iframe>
         </div>
-        <react-tweet-embed />
+        <react-tweet-embed data-tweet-id="1828273245377962327"/>
       `;
 
 export default function Editor() {
