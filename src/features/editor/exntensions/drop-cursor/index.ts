@@ -1,4 +1,4 @@
-import { EditorState, Plugin, PluginKey } from "@tiptap/pm/state";
+import { Plugin, PluginKey } from "@tiptap/pm/state";
 import { EditorView } from "@tiptap/pm/view";
 import { Extension } from "@tiptap/react";
 
@@ -18,11 +18,13 @@ class DropCursorView {
   handlers: { name: string; handler: (event: Event) => void }[];
   cursorPos: number | null = null;
   element: HTMLElement | null = null;
+  width: number = 2;
 
   constructor(readonly editorView: EditorView) {
-    this.handlers = ["dragover", "drop", "dragend", "dragleave"].map((name) => {
+    const handleNames = ["dragover", "drop", "dragend", "dragleave"] as const;
+    this.handlers = handleNames.map((name) => {
       const handler = (e: Event) => {
-        (this as any)[name](e);
+        this[name](e as DragEvent);
       };
       editorView.dom.addEventListener(name, handler);
       return { name, handler };
@@ -35,14 +37,14 @@ class DropCursorView {
     );
   }
 
-  update(editorView: EditorView, prevState: EditorState) {}
+  update() {}
 
   setCursor(pos: number | null) {
     if (pos == this.cursorPos) return;
 
     this.cursorPos = pos;
 
-    if (pos == null && this.element != null) {
+    if (pos === null && this.element != null) {
       this.element.parentNode?.removeChild(this.element);
       this.element = null;
     } else {
@@ -52,29 +54,37 @@ class DropCursorView {
 
   updateOverlay() {
     if (!this.cursorPos) return;
-
     const { doc } = this.editorView.state;
-    const $pos = doc.resolve(this.cursorPos!);
+
     let rect;
+    if (this.cursorPos === 1) {
+      const afterDOM = this.editorView.nodeDOM(0);
+      const nodeRect = (afterDOM as HTMLElement).getBoundingClientRect();
+      const halfWidth = this.width / 2;
+      rect = {
+        left: nodeRect.left,
+        right: nodeRect.right,
+        top: nodeRect.top - halfWidth - 5,
+        bottom: nodeRect.top + halfWidth - 5,
+      };
+    } else {
+      const posAfterCurBlock = doc.resolve(this.cursorPos).after(1);
+      const $posAfterCurBlock = doc.resolve(posAfterCurBlock);
 
-    const pos = $pos.after(1);
-    const index = $pos.index(1);
-    const before = doc.nodeAt(index - 1);
-    const after = doc.nodeAt(index + 1);
-    const node = this.editorView.nodeDOM(pos - (before ? before.nodeSize : 0));
+      const indexCurBlock = $posAfterCurBlock.index(0);
 
-    if (node) {
-      console.log(node);
-      const nodeRect = (node as HTMLElement).getBoundingClientRect();
-      let top = before ? nodeRect.bottom : nodeRect.top;
-      if (before && after)
-        top =
-          (top +
-            (
-              this.editorView.nodeDOM(pos) as HTMLElement
-            ).getBoundingClientRect().top) /
-          2;
-      const halfWidth = 1 / 2;
+      const beforeBlock = doc.child(Math.max(indexCurBlock - 1, 0));
+      const beforeDOM = this.editorView.nodeDOM(
+        posAfterCurBlock - (beforeBlock ? beforeBlock?.nodeSize : 0)
+      );
+      const afterDOM = this.editorView.nodeDOM(posAfterCurBlock);
+
+      const nodeRect = (beforeDOM as HTMLElement).getBoundingClientRect();
+      let top = beforeBlock ? nodeRect.bottom : nodeRect.top;
+      if (afterDOM)
+        top = (top + (afterDOM as HTMLElement).getBoundingClientRect().top) / 2;
+
+      const halfWidth = this.width / 2;
       rect = {
         left: nodeRect.left,
         right: nodeRect.right,
@@ -87,12 +97,12 @@ class DropCursorView {
     if (!this.element) {
       this.element = parent.appendChild(document.createElement("div"));
       this.element.style.cssText =
-        "position: absolute; z-index: 50; pointer-events: none; background-color: red;";
+        "position: absolute; z-index: 50; pointer-events: none; background-color: #8b5cf6;";
       this.element.classList.add("prosemirror-dropcursor-block");
     }
 
-    this.element.style.left = rect.left + "px";
-    this.element.style.top = rect.top + "px";
+    this.element.style.left = rect.left + window.scrollX + "px";
+    this.element.style.top = rect.top + window.scrollY + "px";
     this.element.style.width = rect.right - rect.left + "px";
     this.element.style.height = rect.bottom - rect.top + "px";
   }
@@ -118,8 +128,10 @@ class DropCursorView {
     this.setCursor(null);
   }
 
-  dragleave() {
-    this.setCursor(null);
+  dragleave(e: DragEvent) {
+    if (!this.editorView.dom.contains(e.relatedTarget as Node)) {
+      this.setCursor(null);
+    }
   }
 }
 

@@ -27,12 +27,13 @@ const Image = TiptapImage.extend({
               event.dataTransfer.files.length === 1
             ) {
               event.preventDefault();
+              const posInsert = pos.pos === 1 ? 0 : $pos.after(1); // 先頭への挿入は別途制御する
 
               generateDataURLFromFile(event.dataTransfer.files[0]).then(
                 (url) => {
                   editor
                     .chain()
-                    .insertContentAt($pos.after(1), {
+                    .insertContentAt(posInsert, {
                       type: "image",
                       attrs: {
                         src: url,
