@@ -1,5 +1,4 @@
 import Document from "@tiptap/extension-document";
-import Heading from "@tiptap/extension-heading";
 import Paragraph from "@tiptap/extension-paragraph";
 import Text from "@tiptap/extension-text";
 import Placeholder from "@tiptap/extension-placeholder";
@@ -23,6 +22,7 @@ import ForceParagraphLastBlock from "../../exntensions/force-paragraph-last-bloc
 import CustomDropCursor from "../../exntensions/drop-cursor";
 import Youtube from "@tiptap/extension-youtube";
 import TweetEmbed from "../../exntensions/tweet-embed";
+import heading from "../../exntensions/heading";
 
 const extensions: Extensions = [
   CustomDropCursor,
@@ -32,7 +32,7 @@ const extensions: Extensions = [
   Placeholder.configure({
     placeholder: "ここに入力してください",
   }),
-  Heading.configure({
+  heading.configure({
     levels: [1, 2, 3],
   }),
   Image,
