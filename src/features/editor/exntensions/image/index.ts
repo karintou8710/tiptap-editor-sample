@@ -46,6 +46,38 @@ const Image = TiptapImage.extend({
               return true;
             }
           },
+          handlePaste(view, event) {
+            const hasFile =
+              event.clipboardData &&
+              event.clipboardData.files &&
+              event.clipboardData.files.length === 1;
+
+            if (!hasFile) return false;
+
+            const file = event.clipboardData.files[0];
+            if (!/image/i.test(file.type)) {
+              return false;
+            }
+
+            event.preventDefault();
+            const { doc, selection } = view.state;
+            const $pos = doc.resolve(selection.from);
+            const posInsert = selection.from === 1 ? 0 : $pos.after(1); // 先頭への挿入は別途制御する
+
+            generateDataURLFromFile(file).then((url) => {
+              editor
+                .chain()
+                .insertContentAt(posInsert, {
+                  type: "image",
+                  attrs: {
+                    src: url,
+                  },
+                })
+                .run();
+            });
+
+            return true;
+          },
         },
       }),
     ];
