@@ -24,6 +24,8 @@ import Youtube from "@tiptap/extension-youtube";
 import TweetEmbed from "../../exntensions/tweet-embed";
 import heading from "../../exntensions/heading";
 import Link from "@tiptap/extension-link";
+import TextStyle from "@tiptap/extension-text-style";
+import Color from "@tiptap/extension-color";
 
 const extensions: Extensions = [
   CustomDropCursor,
@@ -55,6 +57,8 @@ const extensions: Extensions = [
   Link.configure({
     protocols: ["https"],
   }),
+  TextStyle,
+  Color,
 ];
 
 export default extensions;

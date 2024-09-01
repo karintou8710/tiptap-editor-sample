@@ -6,7 +6,7 @@ import "./index.scss";
 import extensions from "./extensions";
 
 const content = `
-        <h1>Tiptap製のエディタ</h1>
+        <h1><span style="color: #bef264">Tiptap製</span>のエディタ</h1>
         <p></p>
         <p><a href="https://projectmili.com/"><b>Mili</b></a><b> - Compass</b></p>
         <div data-youtube-video>

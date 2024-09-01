@@ -9,6 +9,7 @@ import {
   MdFormatUnderlined,
 } from "react-icons/md";
 import { FaLink, FaMarker } from "react-icons/fa";
+import { ImTextColor } from "react-icons/im";
 
 type Props = {
   editor: Editor;
@@ -79,6 +80,23 @@ export default function TooltipsMark({ editor, className }: Props) {
         aria-checked={editor.isActive("link")}
       >
         <FaLink size={15} />
+      </button>
+      <button
+        onClick={() => editor.chain().focus().setColor("#ef4444").run()}
+        role="checkbox"
+        aria-checked={editor.isActive("textStyle", { color: "#ef4444" })}
+      >
+        <ImTextColor size={15} color="#ef4444" />
+      </button>
+      <button
+        onClick={() => editor.chain().focus().setColor("#bef264").run()}
+        role="checkbox"
+        aria-checked={editor.isActive("textStyle", { color: "#bef264" })}
+      >
+        <ImTextColor size={15} color="#bef264" />
+      </button>
+      <button onClick={() => editor.chain().focus().unsetColor().run()}>
+        <ImTextColor size={15} />
       </button>
     </div>
   );
