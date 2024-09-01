@@ -33,7 +33,9 @@ const extensions: Extensions = [
   Paragraph,
   Text,
   Placeholder.configure({
-    placeholder: "ここに入力してください",
+    placeholder: () => {
+      return "ここに入力してください";
+    },
   }),
   heading.configure({
     levels: [1, 2, 3],
