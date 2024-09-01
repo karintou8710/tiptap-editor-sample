@@ -8,7 +8,7 @@ import extensions from "./extensions";
 const content = `
         <h1>Tiptap製のエディタ</h1>
         <p></p>
-        <p><b>Mill - Compass</b></p>
+        <p><a href="https://projectmili.com/"><b>Mili</b></a><b> - Compass</b></p>
         <div data-youtube-video>
           <iframe src="https://www.youtube.com/watch?v=92E0X59wzeg"></iframe>
         </div>

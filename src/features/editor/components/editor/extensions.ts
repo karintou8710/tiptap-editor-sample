@@ -23,6 +23,7 @@ import CustomDropCursor from "../../exntensions/drop-cursor";
 import Youtube from "@tiptap/extension-youtube";
 import TweetEmbed from "../../exntensions/tweet-embed";
 import heading from "../../exntensions/heading";
+import Link from "@tiptap/extension-link";
 
 const extensions: Extensions = [
   CustomDropCursor,
@@ -51,6 +52,9 @@ const extensions: Extensions = [
   ForceParagraphLastBlock,
   Youtube,
   TweetEmbed,
+  Link.configure({
+    protocols: ["https"],
+  }),
 ];
 
 export default extensions;

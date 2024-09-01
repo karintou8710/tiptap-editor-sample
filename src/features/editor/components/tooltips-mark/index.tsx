@@ -8,7 +8,7 @@ import {
   MdFormatStrikethrough,
   MdFormatUnderlined,
 } from "react-icons/md";
-import { FaMarker } from "react-icons/fa";
+import { FaLink, FaMarker } from "react-icons/fa";
 
 type Props = {
   editor: Editor;
@@ -16,6 +16,19 @@ type Props = {
 };
 
 export default function TooltipsMark({ editor, className }: Props) {
+  const handleToggleLink = () => {
+    if (editor.isActive("link")) {
+      editor.chain().unsetLink().run();
+    } else {
+      const prevLink: string | null = editor.getAttributes("link").href;
+      const link = window.prompt("Enter url", prevLink ?? "");
+
+      if (link) {
+        editor.chain().setLink({ href: link }).run();
+      }
+    }
+  };
+
   return (
     <div className={`${styles.buttonGroup} ${className}`}>
       <button
@@ -59,6 +72,13 @@ export default function TooltipsMark({ editor, className }: Props) {
         aria-checked={editor.isActive("pen")}
       >
         <FaMarker size={15} />
+      </button>
+      <button
+        onClick={handleToggleLink}
+        role="checkbox"
+        aria-checked={editor.isActive("link")}
+      >
+        <FaLink size={15} />
       </button>
     </div>
   );
