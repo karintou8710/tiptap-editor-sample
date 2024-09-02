@@ -26,8 +26,10 @@ import heading from "../../exntensions/heading";
 import Link from "@tiptap/extension-link";
 import TextStyle from "@tiptap/extension-text-style";
 import Color from "@tiptap/extension-color";
+import Emoji from "../../exntensions/emoji";
 
 const extensions: Extensions = [
+  Emoji,
   CustomDropCursor,
   Document,
   Paragraph,

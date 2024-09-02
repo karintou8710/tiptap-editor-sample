@@ -29,12 +29,7 @@ const Pen = Mark.create<PenOptions>({
   parseHTML() {
     return [
       {
-        tag: "span",
-        attrs: [
-          {
-            class: "pen",
-          },
-        ],
+        tag: "span[class='pen']",
       },
     ];
   },

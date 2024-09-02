@@ -109,10 +109,12 @@ export default function TooltipsNode({ editor }: Props) {
       <button onClick={addYoutubeVideo}>
         <FaYoutube size={20} />
       </button>
-
       <FileInput onChange={onImageFileChange}>
         <FaImage size={20} />
       </FileInput>
+      <button onClick={() => editor.chain().focus().setEmoji("fire").run()}>
+        🔥
+      </button>
     </div>
   );
 }

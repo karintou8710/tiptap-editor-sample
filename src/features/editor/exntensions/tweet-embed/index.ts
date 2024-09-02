@@ -44,7 +44,6 @@ const TweetEmbed = Node.create({
         find: twitterUrlReg,
         type: this.type,
         getAttributes(match) {
-          console.log(match);
           return {
             tweetId: match[2],
           };
