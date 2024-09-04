@@ -1,9 +1,3 @@
-export type Emoji = {
-  name: string;
-  data: string;
-};
+import data, { EmojiMartData } from "@emoji-mart/data";
 
-export const emojiData: Emoji[] = [
-  { name: "fire", data: "🔥" },
-  { name: "thumbs_up", data: "👍" },
-];
+export const emojiData = Object.values((data as EmojiMartData).emojis);

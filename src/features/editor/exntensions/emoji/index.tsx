@@ -6,7 +6,7 @@ import suggestion from "./suggestion";
 declare module "@tiptap/react" {
   interface Commands<ReturnType> {
     emoji: {
-      setEmoji: (name: string) => ReturnType;
+      setEmoji: (id: string) => ReturnType;
     };
   }
 }
@@ -16,17 +16,18 @@ const Emoji = Node.create({
   group: "inline",
   atom: true,
   inline: true,
+  selectable: false,
 
   addAttributes() {
     return {
-      emojiName: {
+      emojiId: {
         default: null,
         parseHTML(el) {
-          return el.getAttribute("data-emoji-name");
+          return el.getAttribute("data-emoji-id");
         },
         renderHTML(attrs) {
           return {
-            "data-emoji-name": attrs.emojiName,
+            "data-emoji-id": attrs.emojiId,
           };
         },
       },
@@ -34,28 +35,28 @@ const Emoji = Node.create({
   },
 
   parseHTML() {
-    return Object.keys(emojiData).map((name) => ({
-      tag: `span[data-emoji-name="${name}"]`,
+    return emojiData.map((item) => ({
+      tag: `span[data-emoji-id="${item.id}"]`,
     }));
   },
 
   renderHTML({ HTMLAttributes }) {
-    const name: string | undefined = HTMLAttributes["data-emoji-name"];
-    const emoji = emojiData.find((item) => item.name === name);
-    if (!emoji) throw new Error("invalid emoji name");
+    const id: string | undefined = HTMLAttributes["data-emoji-id"];
+    const emoji = emojiData.find((item) => item.id === id);
+    if (!emoji) throw new Error("invalid emoji id");
 
-    return ["span", HTMLAttributes, emoji.data];
+    return ["span", HTMLAttributes, emoji.skins[0].native];
   },
 
   addCommands() {
     return {
       setEmoji:
-        (name) =>
+        (id) =>
         ({ commands }) => {
           return commands.insertContent({
             type: this.name,
             attrs: {
-              emojiName: name,
+              emojiId: id,
             },
           });
         },

@@ -2,7 +2,7 @@ import { SuggestionKeyDownProps, SuggestionProps } from "@tiptap/suggestion";
 import "./index.scss";
 
 import { forwardRef, useEffect, useImperativeHandle, useState } from "react";
-import { Emoji } from "../data";
+import { Emoji } from "@emoji-mart/data";
 
 export type EmojiListRef = {
   onKeyDown: (props: SuggestionKeyDownProps) => boolean;
@@ -19,7 +19,7 @@ const EmojiList = forwardRef<EmojiListRef, EmojiListProps>((props, ref) => {
     const item = props.items[index];
 
     if (item) {
-      props.command({ name: item.name });
+      props.command({ emojiId: item.id });
     }
   };
 
@@ -69,7 +69,7 @@ const EmojiList = forwardRef<EmojiListRef, EmojiListProps>((props, ref) => {
             key={index}
             onClick={() => selectItem(index)}
           >
-            {item.name} {item.data}
+            {item.name} ({item.id}) {item.skins[0].native}
           </button>
         ))
       ) : (

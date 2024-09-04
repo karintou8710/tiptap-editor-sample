@@ -1,8 +1,9 @@
 import { ReactRenderer } from "@tiptap/react";
 import tippy, { Instance } from "tippy.js";
-import { Emoji, emojiData } from "./data";
+import { emojiData } from "./data";
 import { SuggestionOptions } from "@tiptap/suggestion";
 import EmojiList, { EmojiListProps, EmojiListRef } from "./emoji-list";
+import { Emoji } from "@emoji-mart/data";
 
 const Suggestion: Omit<SuggestionOptions, "editor"> = {
   char: ":",
@@ -10,9 +11,9 @@ const Suggestion: Omit<SuggestionOptions, "editor"> = {
   items: ({ query }): Emoji[] => {
     return emojiData
       .filter((item) => {
-        return item.name.toLowerCase().startsWith(query.toLowerCase());
+        return item.id.toLowerCase().startsWith(query.toLowerCase());
       })
-      .slice(0, 5);
+      .slice(0, 10);
   },
 
   command: ({ editor, range, props }) => {
@@ -23,7 +24,7 @@ const Suggestion: Omit<SuggestionOptions, "editor"> = {
         {
           type: "emoji",
           attrs: {
-            emojiName: props.name,
+            emojiId: props.emojiId,
           },
         },
       ])
