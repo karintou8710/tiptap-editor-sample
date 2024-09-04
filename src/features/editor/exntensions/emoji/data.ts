@@ -1,6 +1,9 @@
-export const emojiData = {
-  fire: "🔥",
-  thumbs_up: "👍",
+export type Emoji = {
+  name: string;
+  data: string;
 };
 
-export type EmojiNames = keyof typeof emojiData;
+export const emojiData: Emoji[] = [
+  { name: "fire", data: "🔥" },
+  { name: "thumbs_up", data: "👍" },
+];

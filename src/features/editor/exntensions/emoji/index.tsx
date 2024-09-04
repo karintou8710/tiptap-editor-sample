@@ -1,10 +1,12 @@
 import { Node } from "@tiptap/react";
-import { emojiData, EmojiNames } from "./data";
+import { emojiData } from "./data";
+import Suggestion from "@tiptap/suggestion";
+import suggestion from "./suggestion";
 
 declare module "@tiptap/react" {
   interface Commands<ReturnType> {
     emoji: {
-      setEmoji: (name: EmojiNames) => ReturnType;
+      setEmoji: (name: string) => ReturnType;
     };
   }
 }
@@ -38,11 +40,11 @@ const Emoji = Node.create({
   },
 
   renderHTML({ HTMLAttributes }) {
-    const name: EmojiNames | undefined = HTMLAttributes["data-emoji-name"];
-    if (!name) throw new Error("invalid emoji name");
-    const emoji = emojiData[name];
+    const name: string | undefined = HTMLAttributes["data-emoji-name"];
+    const emoji = emojiData.find((item) => item.name === name);
+    if (!emoji) throw new Error("invalid emoji name");
 
-    return ["span", HTMLAttributes, emoji];
+    return ["span", HTMLAttributes, emoji.data];
   },
 
   addCommands() {
@@ -58,6 +60,15 @@ const Emoji = Node.create({
           });
         },
     };
+  },
+
+  addProseMirrorPlugins() {
+    return [
+      Suggestion({
+        editor: this.editor,
+        ...suggestion,
+      }),
+    ];
   },
 });
 

@@ -29,8 +29,6 @@ import Color from "@tiptap/extension-color";
 import Emoji from "../../exntensions/emoji";
 
 const extensions: Extensions = [
-  Emoji,
-  CustomDropCursor,
   Document,
   Paragraph,
   Text,
@@ -63,6 +61,8 @@ const extensions: Extensions = [
   }),
   TextStyle,
   Color,
+  Emoji,
+  CustomDropCursor,
 ];
 
 export default extensions;
