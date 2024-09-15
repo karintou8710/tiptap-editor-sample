@@ -22,7 +22,7 @@ import ForceParagraphLastBlock from "../../exntensions/force-paragraph-last-bloc
 import CustomDropCursor from "../../exntensions/drop-cursor";
 import Youtube from "@tiptap/extension-youtube";
 import TweetEmbed from "../../exntensions/tweet-embed";
-import heading from "../../exntensions/heading";
+import Heading from "../../exntensions/heading";
 import Link from "@tiptap/extension-link";
 import TextStyle from "@tiptap/extension-text-style";
 import Color from "@tiptap/extension-color";
@@ -30,39 +30,44 @@ import Emoji from "../../exntensions/emoji";
 import UniqueId from "../../exntensions/unique-id";
 
 const extensions: Extensions = [
+  // Node
   Document,
   Paragraph,
   Text,
-  Placeholder.configure({
-    placeholder: () => {
-      return "ここに入力してください";
-    },
-  }),
-  heading.configure({
+  Heading.configure({
     levels: [1, 2, 3],
   }),
   Image,
-  History,
   Blockquote,
   BulletList,
   ListItem,
   OrderedList,
   HorizontalRule,
+  Youtube,
+  TweetEmbed,
+  Link.configure({
+    protocols: ["https"],
+  }),
+  Emoji,
+
+  // Mark
   Bold,
   Italic,
   Strike,
   Underline,
   Code,
   Pen,
-  ForceParagraphLastBlock,
-  Youtube,
-  TweetEmbed,
-  Link.configure({
-    protocols: ["https"],
-  }),
   TextStyle,
+
+  // Functional
+  Placeholder.configure({
+    placeholder: () => {
+      return "ここに入力してください";
+    },
+  }),
+  History,
+  ForceParagraphLastBlock,
   Color,
-  Emoji,
   CustomDropCursor,
   UniqueId,
 ];
