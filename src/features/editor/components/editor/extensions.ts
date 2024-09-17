@@ -19,7 +19,6 @@ import Code from "@tiptap/extension-code";
 import Image from "../../exntensions/image";
 import Pen from "../../exntensions/pen";
 import ForceParagraphLastBlock from "../../exntensions/force-paragraph-last-block";
-import CustomDropCursor from "../../exntensions/drop-cursor";
 import Youtube from "@tiptap/extension-youtube";
 import TweetEmbed from "../../exntensions/tweet-embed";
 import Heading from "../../exntensions/heading";
@@ -28,6 +27,7 @@ import TextStyle from "@tiptap/extension-text-style";
 import Color from "@tiptap/extension-color";
 import Emoji from "../../exntensions/emoji";
 import UniqueId from "../../exntensions/unique-id";
+import Dropcursor from "@tiptap/extension-dropcursor";
 
 const extensions: Extensions = [
   // Node
@@ -61,14 +61,21 @@ const extensions: Extensions = [
 
   // Functional
   Placeholder.configure({
-    placeholder: () => {
+    placeholder: ({ node }) => {
+      if (node.type.name === "heading") {
+        return "見出しを入力してください";
+      }
+
       return "ここに入力してください";
     },
   }),
   History,
   ForceParagraphLastBlock,
   Color,
-  CustomDropCursor,
+  Dropcursor.configure({
+    width: 2,
+    color: "#9333ea",
+  }),
   UniqueId,
 ];
 

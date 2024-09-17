@@ -14,7 +14,6 @@ class Dragging {
 }
 
 type DragInfo = {
-  isAtom: boolean;
   dom: HTMLElement;
   node: Node;
   nodeSelection: NodeSelection;
@@ -46,26 +45,47 @@ export default function DragHandle() {
   useEffect(() => {
     if (!editor) return;
 
-    editor.$doc.element.onmouseover = (ev) => {
+    editor.$doc.element.onmousemove = (ev) => {
       const pos = editor.view.posAtCoords({
         left: ev.clientX,
         top: ev.clientY,
       });
+      if (!pos) return;
 
-      if (pos && pos.inside !== -1) {
+      if (pos.inside >= 0) {
         const $pos = editor.$pos(pos.pos);
 
         if ($pos.node.type.name === "doc") {
           // リーフノードはNodeやDOMの取得方法が通常と異なるので、分けて処理する
           setDragInfo({
-            isAtom: true,
             dom: editor.view.nodeDOM(pos.inside) as HTMLElement,
             node: editor.state.doc.nodeAt(pos.inside) as Node,
             nodeSelection: NodeSelection.create(editor.state.doc, pos.inside),
           });
         } else {
           setDragInfo({
-            isAtom: false,
+            dom: editor.view.domAtPos($pos.from).node as HTMLElement,
+            node: $pos.node,
+            nodeSelection: NodeSelection.create(
+              editor.state.doc,
+              $pos.from - 1 // nodeSelectionはResolvePos.beforeの値を指定する
+            ),
+          });
+        }
+
+        return;
+      } else {
+        const $pos = editor.$pos(pos.pos + 1);
+
+        if ($pos.node.type.name === "doc") {
+          // リーフノードはNodeやDOMの取得方法が通常と異なるので、分けて処理する
+          setDragInfo({
+            dom: editor.view.nodeDOM($pos.pos - 1) as HTMLElement,
+            node: editor.state.doc.nodeAt($pos.pos - 1) as Node,
+            nodeSelection: NodeSelection.create(editor.state.doc, $pos.pos - 1),
+          });
+        } else {
+          setDragInfo({
             dom: editor.view.domAtPos($pos.from).node as HTMLElement,
             node: $pos.node,
             nodeSelection: NodeSelection.create(
@@ -77,8 +97,6 @@ export default function DragHandle() {
 
         return;
       }
-
-      setDragInfo(null);
     };
 
     return () => {

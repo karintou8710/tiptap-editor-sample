@@ -4,7 +4,8 @@
 
 #### ノード
 
-- [x] 見出し
+- [x] 見出し(1~3, Style, Placeholder, SelectMenu, DnD)
+  - ProseMirror の仕様上、ブロックノードに Drop などの挙動変更はハックが求められそう
 - [x] 画像（ボタン）
 - [x] 画像 (DnD)
 - [x] 引用
@@ -40,6 +41,6 @@
 #### カスタム
 
 - [x] 最終行を常に paragraph にする
-- [x] dropcursor をブロック表示のみにする
 - [x] Heading の戦闘でバックスペースを押すと、paragraph に変換
+- [x] 全ての Node に動的なユニーク ID を付与
 - [x] ブロックの DragHandle を実装する

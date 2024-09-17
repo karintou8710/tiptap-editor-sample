@@ -5,13 +5,11 @@ const Heading = TiptapHeading.extend({
     return {
       Backspace: () => {
         const { selection } = this.editor.state;
-        const $pos = this.editor.$pos(selection.from);
-
         if (selection.$from.node().type.name !== this.name) return false;
-        if (!selection.empty) return false;
 
-        // 先頭ではない
-        if ($pos.from !== selection.from) return false;
+        const $pos = this.editor.$pos(selection.from);
+        // ブロックの先頭で削除か
+        if (!selection.empty || $pos.from !== selection.from) return false;
 
         return this.editor.commands.setParagraph();
       },
