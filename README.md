@@ -42,3 +42,4 @@
 - [x] 最終行を常に paragraph にする
 - [x] dropcursor をブロック表示のみにする
 - [x] Heading の戦闘でバックスペースを押すと、paragraph に変換
+- [x] ブロックの DragHandle を実装する

@@ -93,7 +93,9 @@
     margin: 1rem auto;
   }
 
-  img,
+  h1,
+  h2,
+  h3 img,
   div[data-youtube-video],
   .node-tweet-embed {
     &.ProseMirror-selectednode {

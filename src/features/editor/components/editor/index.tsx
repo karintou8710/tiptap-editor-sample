@@ -4,6 +4,7 @@ import BubbleTooltips from "../bubble-tooltips";
 
 import "./index.scss";
 import extensions from "./extensions";
+import DragHandle from "../../exntensions/drag-handle";
 
 const content = `
         <h1><span style="color: #bef264">Tiptap製</span>のエディタ<span data-emoji-id="fire" /></h1>
@@ -23,6 +24,7 @@ export default function Editor() {
       slotBefore={<Tooltips />}
     >
       <BubbleTooltips />
+      <DragHandle />
     </EditorProvider>
   );
 }
