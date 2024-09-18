@@ -18,4 +18,8 @@
     color: white;
     border: none;
   }
+
+  &:disabled {
+    color: #adb5bd;
+  }
 }

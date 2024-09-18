@@ -78,13 +78,20 @@ export default function TooltipsNode({ editor }: Props) {
           }
         }}
       />
+
       <button
-        onClick={() => editor.chain().focus().toggleBlockquote().run()}
+        onClick={() => editor.chain().focus().undo().run()}
         className={styles.btn}
-        role="checkbox"
-        aria-checked={editor.isActive("blockquote")}
+        disabled={!editor.can().undo()}
       >
-        <BsBlockquoteLeft size={20} />
+        <MdUndo size={20} />
+      </button>
+      <button
+        onClick={() => editor.chain().focus().redo().run()}
+        className={styles.btn}
+        disabled={!editor.can().redo()}
+      >
+        <MdRedo size={20} />
       </button>
       <button
         onClick={() => editor.chain().focus().toggleBulletList().run()}
@@ -103,6 +110,14 @@ export default function TooltipsNode({ editor }: Props) {
         <MdFormatListNumbered size={20} />
       </button>
       <button
+        onClick={() => editor.chain().focus().toggleBlockquote().run()}
+        className={styles.btn}
+        role="checkbox"
+        aria-checked={editor.isActive("blockquote")}
+      >
+        <BsBlockquoteLeft size={20} />
+      </button>
+      <button
         onClick={() => editor.chain().focus().setHorizontalRule().run()}
         className={styles.btn}
         role="checkbox"
@@ -111,18 +126,6 @@ export default function TooltipsNode({ editor }: Props) {
         <MdHorizontalRule size={20} />
       </button>
 
-      <button
-        onClick={() => editor.chain().focus().undo().run()}
-        className={styles.btn}
-      >
-        <MdUndo size={20} />
-      </button>
-      <button
-        onClick={() => editor.chain().focus().redo().run()}
-        className={styles.btn}
-      >
-        <MdRedo size={20} />
-      </button>
       <button onClick={addYoutubeVideo} className={styles.btn}>
         <FaYoutube size={20} />
       </button>
