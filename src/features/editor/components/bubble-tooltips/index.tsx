@@ -15,7 +15,15 @@ export default function BubbleTooltips() {
   if (editor == null) return null;
 
   return (
-    <BubbleMenu editor={editor} className={styles.buttonGroup}>
+    <BubbleMenu
+      editor={editor}
+      className={styles.buttonGroup}
+      shouldShow={({ editor, state }) => {
+        if (state.selection.empty) return false;
+
+        return editor.isActive("paragraph") || editor.isActive("heading");
+      }}
+    >
       <button
         onClick={() => editor.chain().focus().toggleBold().run()}
         role="checkbox"

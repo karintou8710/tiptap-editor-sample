@@ -6,15 +6,13 @@
 
 - [x] 見出し(1~3, Style, Placeholder, SelectMenu, DnD)
   - ProseMirror の仕様上、ブロックノードに Drop などの挙動変更はハックが求められそう
-- [x] 画像（ボタン）
-- [x] 画像 (DnD)
+- [x] 画像（メニュー, バブルメニュー, Paste, File Dnd, Block DnD, ）
 - [x] 引用
 - [x] 箇条書きリスト
 - [x] 順序リスト
 - [x] 区切り線
 - [x] 埋め込み (YouTube)
 - [x] 埋め込み (X)
-- [x] 画像 (ペースト)
 - [x] 絵文字
 - [ ] テーブル
 - [ ] コードブロック
