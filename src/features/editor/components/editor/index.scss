@@ -119,11 +119,14 @@
   h2,
   h3,
   img,
+  ul,
+  ol,
   blockquote,
   div[data-youtube-video],
   .node-tweet-embed {
     &.ProseMirror-selectednode {
       outline: 3px solid #9333ea;
+      outline-offset: 2px;
     }
   }
 }

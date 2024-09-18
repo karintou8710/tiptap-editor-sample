@@ -4,6 +4,7 @@ import { NodeSelection } from "@tiptap/pm/state";
 import { Node, Slice } from "@tiptap/pm/model";
 
 import styles from "./index.module.scss";
+import { isTopBlockAtomNode } from "../../libs/node";
 
 class Dragging {
   constructor(
@@ -22,6 +23,36 @@ type DragInfo = {
 export default function DragHandle() {
   const { editor } = useCurrentEditor();
   const [dragInfo, setDragInfo] = useState<DragInfo | null>(null);
+
+  const setTopBlockAtomDragInfo = useCallback(
+    (pos: number) => {
+      if (!editor) return;
+
+      setDragInfo({
+        dom: editor.view.nodeDOM(pos) as HTMLElement,
+        node: editor.state.doc.nodeAt(pos) as Node,
+        nodeSelection: NodeSelection.create(editor.state.doc, pos),
+      });
+    },
+    [editor]
+  );
+
+  const setTopBlockDragInfo = useCallback(
+    (pos: number) => {
+      if (!editor) return;
+
+      const $pos = editor.state.doc.resolve(pos);
+      setDragInfo({
+        dom: editor.view.domAtPos($pos.start(1)).node as HTMLElement,
+        node: $pos.node(1),
+        nodeSelection: NodeSelection.create(
+          editor.state.doc,
+          $pos.start(1) - 1 // nodeSelectionはResolvePos.beforeの値を指定する
+        ),
+      });
+    },
+    [editor]
+  );
 
   const handleDragStart = useCallback(
     (ev: DragEvent) => {
@@ -52,57 +83,21 @@ export default function DragHandle() {
       });
       if (!pos) return;
 
-      if (pos.inside >= 0) {
-        const $pos = editor.$pos(pos.pos);
+      // リーフノードはNodeやDOMの取得方法が通常と異なるので、分けて処理する
 
-        if ($pos.node.type.name === "doc") {
-          // リーフノードはNodeやDOMの取得方法が通常と異なるので、分けて処理する
-          setDragInfo({
-            dom: editor.view.nodeDOM(pos.inside) as HTMLElement,
-            node: editor.state.doc.nodeAt(pos.inside) as Node,
-            nodeSelection: NodeSelection.create(editor.state.doc, pos.inside),
-          });
-        } else {
-          setDragInfo({
-            dom: editor.view.domAtPos($pos.from).node as HTMLElement,
-            node: $pos.node,
-            nodeSelection: NodeSelection.create(
-              editor.state.doc,
-              $pos.from - 1 // nodeSelectionはResolvePos.beforeの値を指定する
-            ),
-          });
-        }
-
-        return;
+      if (isTopBlockAtomNode(editor, pos.pos)) {
+        // inside != -1の時、atomではposが上半分と下半分で異なる(pos.insideは同じ)
+        setTopBlockAtomDragInfo(pos.inside >= 0 ? pos.inside : pos.pos);
       } else {
-        const $pos = editor.$pos(pos.pos + 1);
-
-        if ($pos.node.type.name === "doc") {
-          // リーフノードはNodeやDOMの取得方法が通常と異なるので、分けて処理する
-          setDragInfo({
-            dom: editor.view.nodeDOM($pos.pos - 1) as HTMLElement,
-            node: editor.state.doc.nodeAt($pos.pos - 1) as Node,
-            nodeSelection: NodeSelection.create(editor.state.doc, $pos.pos - 1),
-          });
-        } else {
-          setDragInfo({
-            dom: editor.view.domAtPos($pos.from).node as HTMLElement,
-            node: $pos.node,
-            nodeSelection: NodeSelection.create(
-              editor.state.doc,
-              $pos.from - 1 // nodeSelectionはResolvePos.beforeの値を指定する
-            ),
-          });
-        }
-
-        return;
+        // inside == -1の時、pos.posは要素の外になるので+1する
+        setTopBlockDragInfo(pos.inside >= 0 ? pos.pos : pos.pos + 1);
       }
     };
 
     return () => {
-      editor.$doc.element.onmouseover = null;
+      editor.$doc.element.onmousemove = null;
     };
-  }, [editor]);
+  }, [editor, setTopBlockAtomDragInfo, setTopBlockDragInfo]);
 
   if (dragInfo === null) return null;
 
