@@ -37,13 +37,21 @@
   }
 
   hr {
+    display: block;
     border: none;
-    border-top: 1px solid #adb5bd;
+    padding: 1rem 0;
     cursor: pointer;
-    margin: 2rem 0;
 
-    &.ProseMirror-selectednode {
-      border-top: 1px solid #9333ea;
+    &::before {
+      display: block;
+      content: "";
+      height: 2px;
+      width: 100%;
+      background-color: #adb5bd;
+    }
+
+    &.ProseMirror-selectednode::before {
+      background-color: #9333ea;
     }
   }
 
