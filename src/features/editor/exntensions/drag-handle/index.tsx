@@ -115,6 +115,13 @@ export default function DragHandle() {
       draggable="true"
       className={styles.container}
       onDragStart={handleDragStart}
+      onClick={() =>
+        editor
+          ?.chain()
+          .focus()
+          .setNodeSelection(dragInfo.nodeSelection.from)
+          .run()
+      }
       style={{
         top: top,
         left: left,
