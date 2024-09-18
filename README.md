@@ -4,15 +4,15 @@
 
 #### ノード
 
-- [x] 見出し(1~3, Style, Placeholder, SelectMenu, Block DnD)
+- [x] 見出し
   - ProseMirror の仕様上、ブロックノードに Drop などの挙動変更はハックが求められそう
-- [x] 画像（Menu, Style, File Dnd, Block DnD）
-- [x] 引用 (Menu, Style, Block DnD)
-- [x] 箇条書きリスト (Menu, Block DnD)
-- [x] 順序リスト (Menu, Block DnD)
+- [x] 画像
+- [x] 引用
+- [x] 箇条書きリスト
+- [x] 順序リスト
 - [x] 区切り線
-- [x] Youtube 埋め込み
-- [x] X 埋め込み
+- [x] 埋め込み (Youtube)
+- [x] 埋め込み (X)
 - [x] 絵文字
 - [ ] テーブル
 - [ ] コードブロック
