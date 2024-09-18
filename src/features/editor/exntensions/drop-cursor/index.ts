@@ -116,7 +116,6 @@ class DropCursorView {
     });
 
     if (pos) {
-      console.log(pos);
       this.setCursor(pos.pos);
     }
   }

@@ -1,0 +1,42 @@
+.wrap {
+  position: relative;
+}
+
+.indicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  border: 1px solid black;
+  border-radius: 4px;
+  padding-left: 1rem;
+  padding-right: 0.2rem;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.menu {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  background-color: white;
+  z-index: 10;
+  border: 1px solid black;
+  border-radius: 4px;
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  width: 100%;
+  font-weight: bold;
+
+  &:hover {
+    background-color: whitesmoke;
+  }
+
+  &[aria-checked="true"] {
+    background-color: #06b6d4;
+    color: white;
+    border: none;
+  }
+}

@@ -1,20 +1,21 @@
 .buttonGroup {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 10px;
+}
 
-  button {
-    height: 30px;
-    width: 30px;
-    display: grid;
-    place-content: center;
-    border-radius: 6px;
-    border: 1px solid black;
+.btn {
+  height: 30px;
+  width: 30px;
+  display: grid;
+  place-content: center;
+  border-radius: 6px;
+  border: 1px solid black;
 
-    &[aria-checked="true"] {
-      background-color: #06b6d4;
-      color: white;
-      border: none;
-    }
+  &[aria-checked="true"] {
+    background-color: #06b6d4;
+    color: white;
+    border: none;
   }
 }
