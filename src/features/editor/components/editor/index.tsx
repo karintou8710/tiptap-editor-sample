@@ -5,6 +5,7 @@ import BubbleTooltips from "../bubble-tooltips";
 import "./index.scss";
 import extensions from "./extensions";
 import DragHandle from "../../exntensions/drag-handle";
+import { BASE_STATIC_PATH } from "../../../../constant";
 
 const content = `
         <h1><span style="color: #bef264">Tiptap製</span>のエディタ<span data-emoji-id="fire" /></h1>
@@ -14,7 +15,7 @@ const content = `
           <iframe src="https://www.youtube.com/watch?v=92E0X59wzeg"></iframe>
         </div>
         <react-tweet-embed data-tweet-id="1828273245377962327"></react-tweet-embed>
-        <img src="/lake.jpeg" alt="lake" />
+        <img src="${BASE_STATIC_PATH}/lake.jpeg" alt="lake" />
         <p></p>
       `;
 
