@@ -3,4 +3,9 @@
   width: 24px;
   height: 24px;
   cursor: grab;
+  color: grey;
+
+  &:hover {
+    background-color: oklch(98.5% 0 0);
+  }
 }

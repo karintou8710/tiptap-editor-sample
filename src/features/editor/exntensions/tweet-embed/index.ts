@@ -6,7 +6,6 @@ const twitterUrlReg = /^https:\/\/(twitter\.com|x\.com)\/.*\/status\/(\d+)$/g;
 const TweetEmbed = Node.create({
   name: "tweet-embed",
   group: "block",
-  atom: true,
 
   addAttributes() {
     return {

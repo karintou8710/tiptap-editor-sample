@@ -6,7 +6,6 @@ import History from "@tiptap/extension-history";
 import { Extensions } from "@tiptap/react";
 
 import "./index.scss";
-import Blockquote from "@tiptap/extension-blockquote";
 import BulletList from "@tiptap/extension-bullet-list";
 import ListItem from "@tiptap/extension-list-item";
 import OrderedList from "@tiptap/extension-ordered-list";
@@ -28,6 +27,7 @@ import Color from "@tiptap/extension-color";
 import Emoji from "../../exntensions/emoji";
 import UniqueId from "../../exntensions/unique-id";
 import Dropcursor from "@tiptap/extension-dropcursor";
+import BlockquoteExtension from "../../exntensions/blockquote";
 
 const extensions: Extensions = [
   // Node
@@ -38,14 +38,14 @@ const extensions: Extensions = [
     levels: [1, 2, 3],
   }),
   Image,
-  Blockquote,
+  BlockquoteExtension,
   BulletList,
   ListItem,
   OrderedList,
   HorizontalRule,
   Youtube,
   TweetEmbed,
-  Link.configure({
+  Link.extend({ inclusive: false }).configure({
     protocols: ["https"],
   }),
   Emoji,

@@ -2,14 +2,17 @@ import TiptapHeading from "@tiptap/extension-heading";
 
 const Heading = TiptapHeading.extend({
   addKeyboardShortcuts() {
+    const baseShortcuts =
+      TiptapHeading.config.addKeyboardShortcuts?.call(this) || {};
     return {
+      ...baseShortcuts,
       Backspace: () => {
         const { selection } = this.editor.state;
-        if (selection.$from.node().type.name !== this.name) return false;
+        const { $from } = selection;
+        if ($from.node().type.name !== this.name) return false;
 
-        const $pos = this.editor.$pos(selection.from);
         // ブロックの先頭で削除か
-        if (!selection.empty || $pos.from !== selection.from) return false;
+        if (!selection.empty || $from.start() !== $from.pos) return false;
 
         return this.editor.commands.setParagraph();
       },
