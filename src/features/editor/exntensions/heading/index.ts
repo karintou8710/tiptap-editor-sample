@@ -1,12 +1,12 @@
-import TiptapHeading from "@tiptap/extension-heading";
+import { Heading as TiptapHeading } from "@tiptap/extension-heading";
 import { splitBlockAs } from "@tiptap/pm/commands";
 
 const Heading = TiptapHeading.extend({
   addKeyboardShortcuts() {
-    const baseShortcuts =
-      TiptapHeading.config.addKeyboardShortcuts?.call(this) || {};
     return {
-      ...baseShortcuts,
+      // デフォルトのHeadingショートカットキー
+      ...this.parent?.(),
+
       Backspace: () => {
         const { selection } = this.editor.state;
         const { $from } = selection;

@@ -1,6 +1,6 @@
 import { Node } from "@tiptap/react";
 import { emojiData } from "./data";
-import Suggestion from "@tiptap/suggestion";
+import { Suggestion } from "@tiptap/suggestion";
 import suggestion from "./suggestion";
 
 declare module "@tiptap/react" {
