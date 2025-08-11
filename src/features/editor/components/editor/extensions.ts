@@ -27,7 +27,7 @@ import Color from "@tiptap/extension-color";
 import Emoji from "../../exntensions/emoji";
 import UniqueId from "../../exntensions/unique-id";
 import Dropcursor from "@tiptap/extension-dropcursor";
-import BlockquoteExtension from "../../exntensions/blockquote";
+import Blockquote from "@tiptap/extension-blockquote";
 
 const extensions: Extensions = [
   // Node
@@ -38,7 +38,7 @@ const extensions: Extensions = [
     levels: [1, 2, 3],
   }),
   Image,
-  BlockquoteExtension,
+  Blockquote,
   BulletList,
   ListItem,
   OrderedList,
