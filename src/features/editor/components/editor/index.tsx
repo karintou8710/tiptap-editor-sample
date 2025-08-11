@@ -14,7 +14,6 @@ const content = `
         <div data-youtube-video>
           <iframe src="https://www.youtube.com/watch?v=92E0X59wzeg"></iframe>
         </div>
-        <react-tweet-embed data-tweet-id="1828273245377962327"></react-tweet-embed>
         <img src="${LakeImage}" alt="lake" />
         <p></p>
       `;
