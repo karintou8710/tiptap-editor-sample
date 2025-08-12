@@ -1,8 +1,8 @@
 import { Editor } from "@tiptap/react";
 
 import styles from "./index.module.scss";
-import { useDragHandle } from "./useDragHandle";
-import { DragIcon } from "./DragIcon";
+import { useDragHandle } from "./use-drag-handle";
+import { DragIcon } from "./drag-icon";
 
 // 定数
 export const DRAG_HANDLE_SIZE = 18;
