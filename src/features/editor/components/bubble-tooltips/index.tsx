@@ -1,4 +1,4 @@
-import { useCurrentEditor } from "@tiptap/react";
+import { Editor } from "@tiptap/react";
 import { useEffect, useRef, useState } from "react";
 
 import styles from "./index.module.scss";
@@ -11,8 +11,11 @@ import {
 } from "react-icons/md";
 import { FaMarker } from "react-icons/fa";
 
-export default function BubbleTooltips() {
-  const { editor } = useCurrentEditor();
+type Props = {
+  editor: Editor;
+};
+
+export default function BubbleTooltips({ editor }: Props) {
   const [isVisible, setIsVisible] = useState(false);
   const bubbleMenuRef = useRef<HTMLDivElement>(null);
 

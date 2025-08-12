@@ -1,4 +1,4 @@
-import { EditorProvider } from "@tiptap/react";
+import { useEditor, EditorContent } from "@tiptap/react";
 import Tooltips from "../tooltips";
 import BubbleTooltips from "../bubble-tooltips";
 
@@ -19,14 +19,21 @@ const content = `
       `;
 
 export default function Editor() {
+  const editor = useEditor({
+    extensions,
+    content,
+  });
+
+  if (!editor) {
+    return null;
+  }
+
   return (
-    <EditorProvider
-      extensions={extensions}
-      content={content}
-      slotBefore={<Tooltips />}
-    >
-      <BubbleTooltips />
-      <DragHandle />
-    </EditorProvider>
+    <div>
+      <Tooltips editor={editor} />
+      <EditorContent editor={editor} />
+      <BubbleTooltips editor={editor} />
+      <DragHandle editor={editor} />
+    </div>
   );
 }

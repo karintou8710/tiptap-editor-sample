@@ -1,12 +1,14 @@
-import { useCurrentEditor } from "@tiptap/react";
+import { Editor } from "@tiptap/react";
 
 import styles from "./index.module.scss";
 import TooltipsNode from "../tooltips-node";
 import TooltipsMark from "../tooltips-mark";
 
-export default function Tooltips() {
-  const { editor } = useCurrentEditor();
+type Props = {
+  editor: Editor;
+};
 
+export default function Tooltips({ editor }: Props) {
   if (!editor) return null;
 
   return (

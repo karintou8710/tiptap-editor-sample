@@ -1,4 +1,4 @@
-import { useCurrentEditor } from "@tiptap/react";
+import { Editor } from "@tiptap/react";
 import { DragEvent, useCallback, useEffect, useState } from "react";
 import { NodeSelection } from "@tiptap/pm/state";
 import { Node, Slice } from "@tiptap/pm/model";
@@ -20,8 +20,11 @@ type DragInfo = {
   nodeSelection: NodeSelection;
 };
 
-export default function DragHandle() {
-  const { editor } = useCurrentEditor();
+type Props = {
+  editor: Editor;
+};
+
+export default function DragHandle({ editor }: Props) {
   const [dragInfo, setDragInfo] = useState<DragInfo | null>(null);
 
   const setTopBlockAtomDragInfo = useCallback(
