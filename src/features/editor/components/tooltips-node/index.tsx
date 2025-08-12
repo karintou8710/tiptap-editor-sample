@@ -1,4 +1,4 @@
-import { Editor } from "@tiptap/react";
+import { Editor, useEditorState } from "@tiptap/react";
 
 import styles from "./index.module.scss";
 import { FaImage, FaYoutube } from "react-icons/fa";
@@ -29,6 +29,21 @@ const headingItems = [
 type HeadingValue = SelectValue<typeof headingItems>;
 
 export default function TooltipsNode({ editor }: Props) {
+  const editorState = useEditorState({
+    editor,
+    selector: () => ({
+      isActiveH1: editor.isActive("heading", { level: 1 }),
+      isActiveH2: editor.isActive("heading", { level: 2 }),
+      isActiveH3: editor.isActive("heading", { level: 3 }),
+      isActiveBulletList: editor.isActive("bulletList"),
+      isActiveOrderedList: editor.isActive("orderedList"),
+      isActiveBlockquote: editor.isActive("blockquote"),
+      isActiveHorizontalRule: editor.isActive("horizontalRule"),
+      canUndo: editor.can().undo(),
+      canRedo: editor.can().redo(),
+    }),
+  });
+
   const onImageFileChange = useCallback(
     async (file: File | null | undefined) => {
       if (!file || !editor) return;
@@ -58,9 +73,9 @@ export default function TooltipsNode({ editor }: Props) {
   };
 
   const getHeadingValue = (): HeadingValue => {
-    if (editor.isActive("heading", { level: 1 })) return 1;
-    else if (editor.isActive("heading", { level: 2 })) return 2;
-    else if (editor.isActive("heading", { level: 3 })) return 3;
+    if (editorState.isActiveH1) return 1;
+    else if (editorState.isActiveH2) return 2;
+    else if (editorState.isActiveH3) return 3;
 
     return -1;
   };
@@ -82,14 +97,14 @@ export default function TooltipsNode({ editor }: Props) {
       <button
         onClick={() => editor.chain().focus().undo().run()}
         className={styles.btn}
-        disabled={!editor.can().undo()}
+        disabled={!editorState.canUndo}
       >
         <MdUndo size={20} />
       </button>
       <button
         onClick={() => editor.chain().focus().redo().run()}
         className={styles.btn}
-        disabled={!editor.can().redo()}
+        disabled={!editorState.canRedo}
       >
         <MdRedo size={20} />
       </button>
@@ -97,7 +112,7 @@ export default function TooltipsNode({ editor }: Props) {
         onClick={() => editor.chain().focus().toggleBulletList().run()}
         className={styles.btn}
         role="checkbox"
-        aria-checked={editor.isActive("bulletList")}
+        aria-checked={editorState.isActiveBulletList}
       >
         <MdFormatListBulleted size={20} />
       </button>
@@ -105,7 +120,7 @@ export default function TooltipsNode({ editor }: Props) {
         onClick={() => editor.chain().focus().toggleOrderedList().run()}
         className={styles.btn}
         role="checkbox"
-        aria-checked={editor.isActive("orderedList")}
+        aria-checked={editorState.isActiveOrderedList}
       >
         <MdFormatListNumbered size={20} />
       </button>
@@ -113,7 +128,7 @@ export default function TooltipsNode({ editor }: Props) {
         onClick={() => editor.chain().focus().toggleBlockquote().run()}
         className={styles.btn}
         role="checkbox"
-        aria-checked={editor.isActive("blockquote")}
+        aria-checked={editorState.isActiveBlockquote}
       >
         <BsBlockquoteLeft size={20} />
       </button>
@@ -121,7 +136,7 @@ export default function TooltipsNode({ editor }: Props) {
         onClick={() => editor.chain().focus().setHorizontalRule().run()}
         className={styles.btn}
         role="checkbox"
-        aria-checked={editor.isActive("horizontalRule")}
+        aria-checked={editorState.isActiveHorizontalRule}
       >
         <MdHorizontalRule size={20} />
       </button>

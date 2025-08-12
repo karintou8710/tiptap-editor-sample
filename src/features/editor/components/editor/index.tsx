@@ -1,6 +1,5 @@
 import { useEditor, EditorContent } from "@tiptap/react";
 import Tooltips from "../tooltips";
-import BubbleTooltips from "../bubble-tooltips";
 
 import "./index.scss";
 import extensions from "./extensions";
@@ -32,7 +31,6 @@ export default function Editor() {
     <div>
       <Tooltips editor={editor} />
       <EditorContent editor={editor} />
-      <BubbleTooltips editor={editor} />
       <DragHandle editor={editor} />
     </div>
   );
