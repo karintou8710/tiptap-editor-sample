@@ -6,6 +6,8 @@ import "ress";
 import "tippy.js/themes/light.css";
 import "./index.css";
 
+import "@fontsource/noto-sans-jp";
+
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <App />
