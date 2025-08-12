@@ -7,7 +7,7 @@ import DragHandle from "../../exntensions/drag-handle";
 import LakeImage from "../../../../assets/lake.jpeg";
 
 const content = `
-        <h1><span style="color: #bef264">Tiptap製</span>のエディタ<span data-emoji-id="fire" /></h1>
+        <h1>Tiptap製のエディタ<span data-emoji-id="fire" /></h1>
         <p></p>
         <p><a href="https://projectmili.com/"><b>Mili</b></a><b> - Compass</b><span data-emoji-id="+1" /></p>
         <div data-youtube-video>
