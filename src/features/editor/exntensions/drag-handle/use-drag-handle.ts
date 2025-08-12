@@ -4,6 +4,7 @@ import { NodeSelection } from "@tiptap/pm/state";
 import { Node, Slice } from "@tiptap/pm/model";
 import { isTopBlockAtomNode } from "../../libs/node";
 
+// ProseMirrorの内部実装
 class Dragging {
   constructor(
     public slice: Slice,
@@ -27,7 +28,7 @@ export function useDragHandle(editor: Editor | null) {
 
       setDragTarget({
         dom: editor.view.nodeDOM(pos) as HTMLElement,
-        node: editor.state.doc.nodeAt(pos) as Node,
+        node: editor.state.doc.nodeAt(pos)!,
         nodeSelection: NodeSelection.create(editor.state.doc, pos),
       });
     },
@@ -56,12 +57,10 @@ export function useDragHandle(editor: Editor | null) {
       // ProseMirrorのDragStart参考に実装すれば良さそう。view.draggingに対象のNodeSelectionを入れる
       // https://github.com/ProseMirror/prosemirror-view/blob/b2e782ae7c8013505ba05683b185886585ef5939/src/input.ts
 
-      if (!editor || dragTarget === null) return;
+      if (!editor || dragTarget === null || !ev.dataTransfer) return;
 
-      ev.dataTransfer?.setDragImage(dragTarget.dom, 0, 0);
-      if (ev.dataTransfer) {
-        ev.dataTransfer.effectAllowed = "copyMove";
-      }
+      ev.dataTransfer.setDragImage(dragTarget.dom, 0, 0);
+      ev.dataTransfer.effectAllowed = "copyMove";
 
       editor.view.dragging = new Dragging(
         dragTarget.nodeSelection.content(),
