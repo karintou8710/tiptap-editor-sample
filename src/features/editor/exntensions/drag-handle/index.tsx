@@ -103,7 +103,7 @@ export default function DragHandle() {
 
   const rect = dragInfo.dom.getBoundingClientRect();
   const top = rect?.top + window.scrollY;
-  const left = rect?.left + window.scrollX - 40;
+  const left = rect?.left + window.scrollX - 30;
 
   return (
     <div
@@ -124,16 +124,17 @@ export default function DragHandle() {
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        fill="none"
+        fill="currentColor"
         viewBox="0 0 24 24"
-        strokeWidth="1.5"
-        stroke="currentColor"
+        width="20"
+        height="20"
       >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M3.75 9h16.5m-16.5 6.75h16.5"
-        />
+        <circle cx="7" cy="7" r="1.6" />
+        <circle cx="7" cy="12" r="1.6" />
+        <circle cx="7" cy="17" r="1.6" />
+        <circle cx="13" cy="7" r="1.6" />
+        <circle cx="13" cy="12" r="1.6" />
+        <circle cx="13" cy="17" r="1.6" />
       </svg>
     </div>
   );
