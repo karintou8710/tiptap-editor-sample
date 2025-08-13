@@ -5,8 +5,6 @@ import { useDragHandle } from "./use-drag-handle";
 import { DragIcon } from "./drag-icon";
 import { calcOffset } from "./calc-offset";
 
-const DRAG_HANDLE_SIZE = 18;
-
 interface DragHandleProps {
   editor: Editor | null;
 }
@@ -30,7 +28,7 @@ export function DragHandle({ editor }: DragHandleProps) {
         ...offsetStyles,
       }}
     >
-      <DragIcon width={DRAG_HANDLE_SIZE} height={DRAG_HANDLE_SIZE} />
+      <DragIcon />
     </div>
   );
 }

@@ -26,9 +26,14 @@ export function useDragHandle(editor: Editor | null) {
     (pos: number) => {
       if (!editor) return;
 
+      const dom = editor.view.nodeDOM(pos);
+      const node = editor.state.doc.nodeAt(pos);
+
+      if (!dom || !node) return;
+
       setDragTarget({
-        dom: editor.view.nodeDOM(pos) as HTMLElement,
-        node: editor.state.doc.nodeAt(pos)!,
+        dom: dom as HTMLElement,
+        node,
         nodeSelection: NodeSelection.create(editor.state.doc, pos),
       });
     },
@@ -40,9 +45,13 @@ export function useDragHandle(editor: Editor | null) {
       if (!editor) return;
 
       const $pos = editor.state.doc.resolve(pos);
+      const node = $pos.node(1);
+
+      if (!node) return;
+
       setDragTarget({
         dom: editor.view.domAtPos($pos.start(1)).node as HTMLElement,
-        node: $pos.node(1),
+        node,
         nodeSelection: NodeSelection.create(
           editor.state.doc,
           $pos.before(1) // nodeSelectionはResolvePos.beforeの値を指定する
