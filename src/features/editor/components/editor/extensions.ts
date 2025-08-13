@@ -47,9 +47,6 @@ const extensions: Extensions = [
   HorizontalRule,
   Youtube,
   TweetEmbed,
-  Link.extend({ inclusive: false }).configure({
-    protocols: ["https"],
-  }),
   Emoji,
 
   // Mark
@@ -60,6 +57,9 @@ const extensions: Extensions = [
   Code,
   Pen,
   TextStyle,
+  Link.extend({ inclusive: false }).configure({
+    protocols: ["https"],
+  }),
 
   // Functional
   Placeholder.configure({

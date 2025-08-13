@@ -9,7 +9,7 @@ import LakeImage from "../../../../assets/lake.jpeg";
 const content = `
         <h1>Tiptap製のエディタ<span data-emoji-id="fire" /></h1>
         <p></p>
-        <p><a href="https://projectmili.com/"><b>Mili</b></a><b> - Compass</b><span data-emoji-id="+1" /></p>
+        <p><a href="https://projectmili.com/"><b>Mili</b></a><b> - Compass</b></p>
         <div data-youtube-video>
           <iframe src="https://www.youtube.com/watch?v=92E0X59wzeg"></iframe>
         </div>
