@@ -69,7 +69,7 @@ const EmojiList = forwardRef<EmojiListRef, EmojiListProps>((props, ref) => {
             key={index}
             onClick={() => selectItem(index)}
           >
-            {item.name} ({item.id}) {item.skins[0].native}
+            {item.skins[0].native} &nbsp; :{item.id}:
           </button>
         ))
       ) : (
