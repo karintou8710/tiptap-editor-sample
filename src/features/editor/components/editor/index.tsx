@@ -13,7 +13,10 @@ const content = `
         <div data-youtube-video>
           <iframe src="https://www.youtube.com/watch?v=92E0X59wzeg"></iframe>
         </div>
-        <img src="${LakeImage}" alt="lake" />
+        <figure>
+          <img src="${LakeImage}" alt="lake" />
+          <figcaption>支笏湖</figcaption>
+        </figure>
         <p></p>
       `;
 

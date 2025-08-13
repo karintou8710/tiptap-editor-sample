@@ -3,6 +3,8 @@ import { Plugin, PluginKey } from "@tiptap/pm/state";
 import { generateDataURLFromFile } from "../../../libs/image";
 
 const Image = TiptapImage.extend({
+  group: "image", // figureからのみ挿入可能
+
   addProseMirrorPlugins() {
     const editor = this.editor;
 

@@ -7,7 +7,7 @@ export interface FigureOptions {
 export interface SetFigureOptions {
   src: string;
   alt?: string;
-  caption?: string;
+  caption: string;
 }
 
 declare module "@tiptap/react" {
@@ -64,9 +64,7 @@ export const Figure = Node.create({
               },
               {
                 type: "caption",
-                content: options.caption
-                  ? [{ type: "text", text: options.caption }]
-                  : [], // 空のcaptionでもノードを作成
+                content: [{ type: "text", text: options.caption }],
               },
             ],
           });
