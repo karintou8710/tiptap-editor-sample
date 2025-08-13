@@ -52,10 +52,7 @@ export function useDragHandle(editor: Editor | null) {
       setDragTarget({
         dom: editor.view.domAtPos($pos.start(1)).node as HTMLElement,
         node,
-        nodeSelection: NodeSelection.create(
-          editor.state.doc,
-          $pos.before(1) // nodeSelectionはResolvePos.beforeの値を指定する
-        ),
+        nodeSelection: NodeSelection.create(editor.state.doc, $pos.before(1)),
       });
     },
     [editor]
@@ -84,20 +81,24 @@ export function useDragHandle(editor: Editor | null) {
     (ev: MouseEvent) => {
       if (!editor) return;
 
-      const pos = editor.view.posAtCoords({
+      const posWithInside = editor.view.posAtCoords({
         left: ev.clientX,
         top: ev.clientY,
       });
-      if (!pos) return;
+      if (!posWithInside) return;
 
       // リーフノードはNodeやDOMの取得方法が通常と異なるので、分けて処理する
 
-      if (isTopBlockAtomNode(editor, pos.pos)) {
+      if (isTopBlockAtomNode(editor, posWithInside.pos)) {
         // inside != -1の時、atomではposが上半分と下半分で異なる(pos.insideは同じ)
-        setTopBlockAtomDragInfo(pos.inside >= 0 ? pos.inside : pos.pos);
+        setTopBlockAtomDragInfo(
+          posWithInside.inside >= 0 ? posWithInside.inside : posWithInside.pos
+        );
       } else {
-        // inside == -1の時、pos.posは要素の外になるので+1する
-        setTopBlockDragInfo(pos.inside >= 0 ? pos.pos : pos.pos + 1);
+        // inside == -1の時、posWithInside.posは要素の外になるので+1する
+        setTopBlockDragInfo(
+          posWithInside.inside >= 0 ? posWithInside.pos : posWithInside.pos + 1
+        );
       }
     },
     [editor, setTopBlockAtomDragInfo, setTopBlockDragInfo]
