@@ -8,9 +8,13 @@
   - Heading の戦闘でバックスペースを押すと、paragraph に変換
   - Heading の途中で Enter を押すと、後続が paragraph に変換
 - [x] 画像
+  - figure-caption 対応
+  - 画像クリック時に figure を選択
+  - Backspace で figure を削除
 - [x] 引用
-- [x] 箇条書きリスト
-- [x] 順序リスト
+- [x] リスト
+  - [x] 箇条書きリスト
+  - [x] 順序リスト
 - [x] 区切り線
 - [x] 埋め込み (Youtube)
 - [x] 埋め込み (X)

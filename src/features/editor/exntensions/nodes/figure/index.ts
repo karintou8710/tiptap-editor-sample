@@ -4,16 +4,16 @@ export interface FigureOptions {
   HTMLAttributes: Record<string, any>;
 }
 
-export interface SetFigureOptions {
+export interface InsertFigureOptions {
   src: string;
   alt?: string;
-  caption: string;
+  caption?: string;
 }
 
 declare module "@tiptap/react" {
   interface Commands<ReturnType> {
     figure: {
-      setFigure: (options: SetFigureOptions) => ReturnType;
+      insertFigure: (pos: number, options: InsertFigureOptions) => ReturnType;
     };
   }
 }
@@ -51,10 +51,10 @@ export const Figure = Node.create({
 
   addCommands() {
     return {
-      setFigure:
-        (options) =>
+      insertFigure:
+        (pos, options) =>
         ({ commands }) => {
-          return commands.insertContent({
+          return commands.insertContentAt(pos, {
             type: this.name,
             content: [
               {
@@ -66,7 +66,9 @@ export const Figure = Node.create({
               },
               {
                 type: "caption",
-                content: [{ type: "text", text: options.caption }],
+                content: options.caption
+                  ? [{ type: "text", text: options.caption }]
+                  : [],
               },
             ],
           });

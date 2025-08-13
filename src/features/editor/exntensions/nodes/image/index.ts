@@ -77,11 +77,8 @@ const Image = TiptapImage.extend({
                 (url) => {
                   editor
                     .chain()
-                    .insertContentAt(posInsert, {
-                      type: "image",
-                      attrs: {
-                        src: url,
-                      },
+                    .insertFigure(posInsert, {
+                      src: url,
                     })
                     .run();
                 }
@@ -111,11 +108,8 @@ const Image = TiptapImage.extend({
             generateDataURLFromFile(file).then((url) => {
               editor
                 .chain()
-                .insertContentAt(posInsert, {
-                  type: "image",
-                  attrs: {
-                    src: url,
-                  },
+                .insertFigure(posInsert, {
+                  src: url,
                 })
                 .run();
             });
