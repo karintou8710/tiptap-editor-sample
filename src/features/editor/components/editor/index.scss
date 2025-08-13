@@ -87,6 +87,10 @@
     margin: 1rem auto;
   }
 
+  figcaption {
+    text-align: center;
+  }
+
   // Node Selection
   p,
   h1,
@@ -150,6 +154,11 @@
     float: left;
     height: 0;
     pointer-events: none;
+  }
+
+  figcaption.is-empty::before {
+    color: #adb5bd;
+    content: attr(data-placeholder);
   }
 
   code {

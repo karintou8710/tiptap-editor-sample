@@ -26,6 +26,8 @@ import Emoji from "../../exntensions/emoji";
 import UniqueId from "../../exntensions/unique-id";
 import { Dropcursor } from "@tiptap/extension-dropcursor";
 import { Blockquote } from "@tiptap/extension-blockquote";
+import { Caption } from "../../exntensions/figure/caption";
+import Figure from "../../exntensions/figure/figure";
 
 const extensions: Extensions = [
   // Node
@@ -40,6 +42,8 @@ const extensions: Extensions = [
       class: "image",
     },
   }),
+  Caption,
+  Figure,
   Blockquote,
   BulletList,
   ListItem,
@@ -65,11 +69,16 @@ const extensions: Extensions = [
   Placeholder.configure({
     placeholder: ({ node }) => {
       if (node.type.name === "heading") {
-        return "見出しを入力してください";
+        return "見出しを入力";
       }
 
-      return "ここに入力してください";
+      if (node.type.name === "caption") {
+        return "キャプションを入力";
+      }
+
+      return "ここに入力";
     },
+    includeChildren: true,
   }),
   History,
   ForceParagraphLastBlock,

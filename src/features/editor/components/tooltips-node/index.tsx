@@ -52,7 +52,7 @@ export default function TooltipsNode({ editor }: Props) {
       editor
         .chain()
         .focus()
-        .setImage({
+        .setFigure({
           src: url,
         })
         .run();
