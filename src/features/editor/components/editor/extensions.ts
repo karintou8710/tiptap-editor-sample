@@ -26,8 +26,8 @@ import Emoji from "../../exntensions/nodes/emoji";
 import UniqueId from "../../exntensions/functionality/unique-id";
 import { Dropcursor } from "@tiptap/extension-dropcursor";
 import { Blockquote } from "@tiptap/extension-blockquote";
-import { Caption } from "../../exntensions/nodes/figure/caption";
-import Figure from "../../exntensions/nodes/figure/figure";
+import { Caption } from "../../exntensions/nodes/caption";
+import Figure from "../../exntensions/nodes/figure";
 
 const extensions: Extensions = [
   // Node
