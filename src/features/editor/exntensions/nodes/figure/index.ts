@@ -22,8 +22,10 @@ export const Figure = Node.create({
   name: "figure",
 
   group: "block",
-  content: "image caption?",
+  content: "image caption",
   isolating: true,
+  draggable: true,
+  selectable: true,
 
   addOptions() {
     return {
