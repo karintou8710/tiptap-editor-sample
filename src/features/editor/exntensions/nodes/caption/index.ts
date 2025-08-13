@@ -1,4 +1,3 @@
-import { NodeSelection } from "@tiptap/pm/state";
 import { mergeAttributes, Node } from "@tiptap/react";
 
 export interface CaptionOptions {
