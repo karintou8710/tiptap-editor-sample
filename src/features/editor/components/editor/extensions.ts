@@ -13,21 +13,21 @@ import { Italic } from "@tiptap/extension-italic";
 import { Strike } from "@tiptap/extension-strike";
 import { Underline } from "@tiptap/extension-underline";
 import { Code } from "@tiptap/extension-code";
-import Image from "../../exntensions/image";
-import Pen from "../../exntensions/pen";
-import ForceParagraphLastBlock from "../../exntensions/force-paragraph-last-block";
+import Image from "../../exntensions/nodes/image";
+import Pen from "../../exntensions/marks/pen";
+import ForceParagraphLastBlock from "../../exntensions/functionality/force-paragraph-last-block";
 import { Youtube } from "@tiptap/extension-youtube";
-import TweetEmbed from "../../exntensions/tweet-embed";
-import Heading from "../../exntensions/heading";
+import TweetEmbed from "../../exntensions/nodes/tweet-embed";
+import Heading from "../../exntensions/nodes/heading";
 import { Link } from "@tiptap/extension-link";
 import { TextStyle } from "@tiptap/extension-text-style";
 import { Color } from "@tiptap/extension-color";
-import Emoji from "../../exntensions/emoji";
-import UniqueId from "../../exntensions/unique-id";
+import Emoji from "../../exntensions/nodes/emoji";
+import UniqueId from "../../exntensions/functionality/unique-id";
 import { Dropcursor } from "@tiptap/extension-dropcursor";
 import { Blockquote } from "@tiptap/extension-blockquote";
-import { Caption } from "../../exntensions/figure/caption";
-import Figure from "../../exntensions/figure/figure";
+import { Caption } from "../../exntensions/nodes/figure/caption";
+import Figure from "../../exntensions/nodes/figure/figure";
 
 const extensions: Extensions = [
   // Node

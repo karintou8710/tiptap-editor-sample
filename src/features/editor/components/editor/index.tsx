@@ -3,7 +3,7 @@ import Tooltips from "../tooltips";
 
 import "./index.scss";
 import extensions from "./extensions";
-import DragHandle from "../../exntensions/drag-handle";
+import DragHandle from "../../exntensions/functionality/drag-handle";
 import LakeImage from "../../../../assets/lake.jpeg";
 
 const content = `

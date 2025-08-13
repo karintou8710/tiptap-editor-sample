@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { Editor } from "@tiptap/react";
 import { NodeSelection } from "@tiptap/pm/state";
 import { Node, Slice } from "@tiptap/pm/model";
-import { isTopBlockAtomNode } from "../../libs/node";
+import { isTopBlockAtomNode } from "../../../libs/node";
 
 // ProseMirrorの内部実装
 class Dragging {

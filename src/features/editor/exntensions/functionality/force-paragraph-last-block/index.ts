@@ -1,5 +1,5 @@
 import { Extension } from "@tiptap/react";
-import { getNode } from "../../libs/node";
+import { getNode } from "../../../libs/node";
 
 const ForceParagraphLastBlock = Extension.create({
   name: "force-paragraph-last-block",
