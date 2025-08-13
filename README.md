@@ -5,6 +5,8 @@
 ### ノード
 
 - [x] 見出し
+  - Heading の戦闘でバックスペースを押すと、paragraph に変換
+  - Heading の途中で Enter を押すと、後続が paragraph に変換
 - [x] 画像
 - [x] 引用
 - [x] 箇条書きリスト
@@ -37,9 +39,5 @@
 
 ### カスタム
 
-- [x] 最終行を常に paragraph にする (Trailing Node)
-- [x] Heading の戦闘でバックスペースを押すと、paragraph に変換
-- [x] Heading の途中で Enter を押すと、後続が paragraph に変換
-- [x] 全ての Node に動的なユニーク ID を付与
 - [x] ブロックの DragHandle を実装する
 - [x] NodeSelection で薄いオーバーレイをノード全体に被せる (img, hr 未対応)

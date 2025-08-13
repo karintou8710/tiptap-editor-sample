@@ -4,8 +4,6 @@ import { Text } from "@tiptap/extension-text";
 import { Placeholder } from "@tiptap/extension-placeholder";
 import { History } from "@tiptap/extension-history";
 import { Extensions } from "@tiptap/react";
-
-import "./index.scss";
 import { BulletList, ListItem, OrderedList } from "@tiptap/extension-list";
 import { HorizontalRule } from "@tiptap/extension-horizontal-rule";
 import { Bold } from "@tiptap/extension-bold";
@@ -15,7 +13,6 @@ import { Underline } from "@tiptap/extension-underline";
 import { Code } from "@tiptap/extension-code";
 import Image from "../../exntensions/nodes/image";
 import Pen from "../../exntensions/marks/pen";
-import ForceParagraphLastBlock from "../../exntensions/functionality/force-paragraph-last-block";
 import { Youtube } from "@tiptap/extension-youtube";
 import TweetEmbed from "../../exntensions/nodes/tweet-embed";
 import Heading from "../../exntensions/nodes/heading";
@@ -23,11 +20,13 @@ import { Link } from "@tiptap/extension-link";
 import { TextStyle } from "@tiptap/extension-text-style";
 import { Color } from "@tiptap/extension-color";
 import Emoji from "../../exntensions/nodes/emoji";
-import UniqueId from "../../exntensions/functionality/unique-id";
 import { Dropcursor } from "@tiptap/extension-dropcursor";
 import { Blockquote } from "@tiptap/extension-blockquote";
 import { Caption } from "../../exntensions/nodes/caption";
 import Figure from "../../exntensions/nodes/figure";
+import { TrailingNode } from "@tiptap/extensions";
+
+import "./index.scss";
 
 const extensions: Extensions = [
   // Node
@@ -81,13 +80,12 @@ const extensions: Extensions = [
     includeChildren: true,
   }),
   History,
-  ForceParagraphLastBlock,
+  TrailingNode,
   Color,
   Dropcursor.configure({
     width: 2,
     color: "#9333ea",
   }),
-  UniqueId,
 ];
 
 export default extensions;
